@@ -1,0 +1,24 @@
+.schools a {
+  color: unset;
+  text-decoration: unset;
+}
+
+.schools .schools-check,
+.schools input[type=checkbox] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.schools .btn-secondary {
+  background-color: #4FA9DD;
+  border: none;
+}
+
+.schools .btn-secondary:hover {
+  background-color: #187cb6;
+}
+
+.schools .btn-edit {
+  background-color: #4FA9DD;
+}
+/*# sourceMappingURL=schools.css.map */

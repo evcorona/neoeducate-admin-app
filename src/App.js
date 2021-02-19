@@ -1,25 +1,69 @@
-import logo from './logo.svg';
+/* Import Tools */
+import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+/* Import Styles */
+import {
+  Container,
+  Row,
+} from 'reactstrap'
 import './App.css';
 
-function App() {
+/* Import Pages */
+import Login from './Pages/Login'
+import Home from './Pages/Home'
+import School from './Pages/Schools'
+import NewSchool from './Pages/NewSchool'
+import SchoolDetail from './Pages/SchoolDetail'
+
+/* Import Components */
+import NavBar from './Components/NavBar/index'
+
+export default function App() {
+  /* Common Vars */
+  const endpoint = "https://cherry-practices-default-rtdb.firebaseio.com/neoeducate/users/.json"
+  let jwt = localStorage.getItem("neojwt")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        {/* FORCING LOGIN */}
+        {jwt ? (
+          <>
+            <NavBar />
+            {/* ROUTES TO PAGES */}
+            <Switch>
+              <Container fluid>
+                <Row>
+                  <Container className="position-relative">
+                      <Route exact path="/">
+                        <Home />
+                      </Route>
+                      <Route path="/schools">
+                        <School/>
+                      </Route>
+                      <Route path="/school-detail">
+                        <SchoolDetail/>
+                      </Route>    
+                      <Route path="/new-school">
+                        <NewSchool/>
+                      </Route>             
+                  </Container>
+                </Row>
+              </Container>
+            </Switch>
+          </>
+        ) : <Login />}
+
+      </Router>
+
+
     </div>
   );
 }
 
-export default App;

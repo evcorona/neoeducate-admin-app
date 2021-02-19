@@ -1,0 +1,33 @@
+.navbar {
+  img {
+    width: 100px;
+    object-fit: contain;
+  }
+
+  .btn {
+    background-color: #F30098;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: #da0f8c;
+    }
+
+    &:focus {
+      background-color: #da0f8c;
+    }
+
+    &:active {
+      background-color: #da0f8c;
+      ;
+    }
+  }
+
+  a {
+    color: unset;
+
+    &:hover {
+      color: unset;
+    }
+  }
+}

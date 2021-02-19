@@ -1,0 +1,32 @@
+.navbar img {
+  width: 100px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.navbar .btn {
+  background-color: #F30098;
+  color: white;
+  border: none;
+}
+
+.navbar .btn:hover {
+  background-color: #da0f8c;
+}
+
+.navbar .btn:focus {
+  background-color: #da0f8c;
+}
+
+.navbar .btn:active {
+  background-color: #da0f8c;
+}
+
+.navbar a {
+  color: unset;
+}
+
+.navbar a:hover {
+  color: unset;
+}
+/*# sourceMappingURL=navbar.css.map */

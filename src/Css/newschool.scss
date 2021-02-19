@@ -1,0 +1,28 @@
+.news-form {
+  background-color: #002B87;
+  color: white;
+  font-weight: bold;
+
+  .btn {
+    background-color: #4fa9dd;
+    color: white;
+    border: none;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #1d9ce6;
+      color: white;
+    }
+  }
+
+  .btn-light {
+    background-color: #002B87;
+    border: 3px solid #4fa9dd;
+    color: #4fa9dd;
+
+    &:hover {
+      background-color: #002B87;
+      color: white;
+    }
+  }
+}
