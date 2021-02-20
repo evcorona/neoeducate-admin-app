@@ -54,6 +54,7 @@ function Login() {
   return (
     <Container fluid className="login-bg">
       <Row>
+        <div class="bg-image"></div>
         <Col sm="12" md={{ size: 8, offset: 2 }} className="d-flex flex-column justify-content-center align-items-center login-col">
           <div className="login p-5 rounded d-flex flex-column justify-content-center align-items-center shadow">
             <img src={logo} className="mb-2" alt="Neo Educate" />
@@ -65,7 +66,7 @@ function Login() {
               <Label for="floatingInputValue2">Contraseña</Label>
               <Input type="password" className="form-control" placeholder="**********" name="password" onChange={credentialHandler} />
             </Form>
-            <Button type="submit" className="my-2 btn px-5 py-2 text-light border-0 btn-login rounded-pill w-100" onClick={authHandler} >Acceder</Button>
+            <Button className="my-2 btn px-5 py-2 text-light border-0 btn-login rounded-pill w-100" onClick={authHandler} >Acceder</Button>
             <div className={statusAuth.style}>{statusAuth.text}</div>
           </div>
         </Col>
