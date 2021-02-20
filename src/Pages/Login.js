@@ -14,7 +14,7 @@ import {
 import '../Css/login.css';
 
 /* Import Components */
-import logo from '../Images/boy.svg'
+import logo from '../Images/logo.svg'
 import DataAPI from '../Components/Other/DataAPI'
 
 function Login() {
