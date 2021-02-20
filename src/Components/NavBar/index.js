@@ -36,7 +36,7 @@ function NavBar() {
   }
 
   return (
-    <Navbar color="light" light expand="md" className="neo-nav mb-3 p-0">
+    <Navbar color="white" light expand="md" className="neo-nav mb-3 p-0">
       <Container>
         <Link className="navbar-brand" to="/">
           <img src={logo} alt="Neo Educate" />

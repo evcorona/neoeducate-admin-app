@@ -49,10 +49,10 @@ function NewSchool() {
 
   return (
     <Row>
-      <Col xs="12" md={{ size: 6, offset: 3 }} className="news-form p-5 rounded shadow">
+      <Col xs="12" md={{ size: 6, offset: 3 }}>
         <h1 className="text-center mb-4">Add a new school!</h1>
         <div className={postStatus.style}>{postStatus.text}</div>
-        <Form>
+        <Form className="p-3 news-form rounded shadow">
           <FormGroup>
             <Label>Name</Label>
             <Input type="text" name="nameSchool" placeholder="Write here the amazing academy..." onChange={changeHandler} />
