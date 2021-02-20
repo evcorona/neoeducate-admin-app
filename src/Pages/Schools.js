@@ -9,71 +9,110 @@ import {
   Row,
   Col,
   Button,
-  Form,
-  Input,
+  Table,
   ButtonGroup,
-  Card,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  CardFooter,
-  CardBody,
 } from 'reactstrap'
 import '../Css/schools.css';
 
+import SchoolCard from '../Components/SchoolCard/index'
+import SchoolRow from '../Components/SchoolRow/index'
 import DataAPI from '../Components/Other/DataAPI'
+import TierValue from '../Components/Other/TierValue'
 
 function Schools() {
+  /* Common vars */
+  const endpoint = DataAPI().endpoint + DataAPI().schoolRoute
+
+  /* Hooks */
+  const [schoolsCollection, setSchoolsCollection] = useState({})
+
+  /* Actions */
+  const getSchools = () => {
+
+    fetch(endpoint,
+      {
+        headers: { "Authorization": localStorage.getItem("neojwt") }
+      })
+      .then(response => response.json())
+      .then(json => {
+        setSchoolsCollection(json.data)
+      })
+
+  }
+
+  useEffect(() => {
+    getSchools()
+  }, [])
 
 
   return (
-    <Row>
-      <Col xs="12" className="schools p-5 rounded shadow">
-        <div className="school-header">
-          <h1 className="text-center mb-4">Enrolled Schools</h1>
-          <div className="d-flex align-items-center justify-content-between">
-            <Form className="schools-check d-none d-md-block mr-2">
-              <Input type="checkbox" name="allCheckboxes" />
-            </Form>
-            <ButtonGroup className="d-flex align-items-center justify-content-center rounded flex-grow-1">
-              <Button className="flex-fill btn btn-secondary">Name School</Button>
-              <Button className="flex-fill btn btn-secondary">Enrollment Date</Button>
-              <Button className="flex-fill btn btn-secondary">Tier</Button>
+    <>
+      <Row className="mb-4">
+        <Col xs="12" className="schools rounded">
+          <div className="school-header">
+            <h1 className="text-center mb-4">Enrolled Schools</h1>
+            <ButtonGroup className="d-flex align-items-center justify-content-between rounded d-md-none">
+              <Button className="btn-filter">Name</Button>
+              <Button className="btn-filter">Date</Button>
+              <Button className="btn-filter">Tier</Button>
             </ButtonGroup>
           </div>
-        </div>
-
-        <div className="card-container mt-4">
-          <Card className="d-flex flex-md-row justify-content-center align-items-center">
-            <Form className="schools-check d-none d-md-block border-0">
-              <Input type="checkbox" name="id" />
-            </Form>
-            
-              <CardBody className="border-0">
-              <Link to="/school-detail" className="d-flex flex-md-row align-items-center">
-                <div>
-                  <CardTitle tag="h3">School </CardTitle>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted mt-3">Enrollment Date as Client</CardSubtitle>
-                  <small className="rounded-pill bg-warning px-3 py-1">Tier</small>
-                </div>
-                <div className="ml-4">
-                  <CardText>Associated credit card for payments</CardText>
-                  <CardText>Type of plan service</CardText>
-                  <CardText>Quantity of users</CardText>
-                </div>
-                </Link>
-              </CardBody>
-            <CardFooter className="border-0">
-              <ButtonGroup className="d-flex flex-row flex-md-column justify-content-center align-items-center">
-                <Button outline color="danger" className="my-md-3 px-4 flex-fill btn-delete">Delete</Button>
-                <Button className="px-4 flex-fill btn-edit border-0">Edit</Button>
-              </ButtonGroup>
-            </CardFooter>
-          </Card>
-        </div>
-
-      </Col>
-    </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs="12" className="d-md-none card-container">
+          {
+            Object.values(schoolsCollection).map(school => {
+              let { nameSchool, enrrolmentDate, typePlan, qtyUsers, _id } = school
+              return (
+                <SchoolCard
+                  nameSchool={nameSchool}
+                  enrrolmentDate={enrrolmentDate}
+                  typePlan={typePlan}
+                  qtyUsers={qtyUsers}
+                  tier={TierValue(qtyUsers)}
+                  id={_id}
+                />
+              )
+            })
+          }
+        </Col>
+        <Col md="12" className="d-none d-md-block table-container">
+          <Table hover>
+            <thead>
+              <tr>
+                <th className="btn-filter">#</th>
+                <th className="btn-filter">School</th>
+                <th className="btn-filter">Enrrollment Date</th>
+                <th className="btn-filter">Credit Card</th>
+                <th className="btn-filter">Type of Plan</th>
+                <th className="btn-filter">Quantity of Users</th>
+                <th className="btn-filter">Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                Object.keys(schoolsCollection).map(item => {
+                  let { nameSchool, enrrolmentDate, typePlan, card, qtyUsers, _id } = schoolsCollection[item]
+                  return (
+                    <SchoolRow
+                      noItem={parseInt(item)+1}
+                      nameSchool={nameSchool}
+                      enrrolmentDate={enrrolmentDate}
+                      typePlan={typePlan}
+                      qtyUsers={qtyUsers}
+                      tier={TierValue(qtyUsers)}
+                      id={_id}
+                      card={card}
+                    />
+                  )
+                })
+              }
+            </tbody>
+          </Table>
+        </Col>
+      </Row>
+    </>
   );
 }
 

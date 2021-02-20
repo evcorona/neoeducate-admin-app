@@ -4,7 +4,7 @@
     object-fit: contain;
   }
 
-  .btn {
+  .btn-addSchool {
     background-color: #F30098;
     color: white;
     border: none;
@@ -19,7 +19,6 @@
 
     &:active {
       background-color: #da0f8c;
-      ;
     }
   }
 
@@ -37,4 +36,5 @@
       color: #4fa9dd;
     }
   }
+
 }

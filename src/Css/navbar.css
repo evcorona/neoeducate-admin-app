@@ -4,21 +4,21 @@
      object-fit: contain;
 }
 
-.neo-nav .btn {
+.neo-nav .btn-addSchool {
   background-color: #F30098;
   color: white;
   border: none;
 }
 
-.neo-nav .btn:hover {
+.neo-nav .btn-addSchool:hover {
   background-color: #da0f8c;
 }
 
-.neo-nav .btn:focus {
+.neo-nav .btn-addSchool:focus {
   background-color: #da0f8c;
 }
 
-.neo-nav .btn:active {
+.neo-nav .btn-addSchool:active {
   background-color: #da0f8c;
 }
 

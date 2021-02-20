@@ -40,7 +40,7 @@ export default function App() {
             <Switch>
               <Container fluid>
                 <Row>
-                  <Container className="position-relative">
+                  <Container>
                       <Route exact path="/">
                         <Home />
                       </Route>

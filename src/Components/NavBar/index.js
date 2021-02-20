@@ -36,44 +36,36 @@ function NavBar() {
   }
 
   return (
-    <Navbar color="light" light expand="md" className="pt-2 pb-4 neo-nav">
+    <Navbar color="light" light expand="md" className="neo-nav mb-3 p-0">
       <Container>
-        <NavbarBrand>
-          <Link className="navbar-brand" to="/">
-            <img src={logo} alt="Neo Educate" />
-          </Link>
-        </NavbarBrand>
+        <Link className="navbar-brand" to="/">
+          <img src={logo} alt="Neo Educate" />
+        </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto d-flex flex-md-row justify-content-start align-items-md-center " navbar>
+          <Nav className="w-100 d-flex align-items-center justify-content-around" navbar>
             <NavItem>
-              <NavLink>
-                <Link className="nav-link font-weight-bold text-secondary" to="/">Dashboard</Link>
-              </NavLink>
+              <Link className="nav-link font-weight-bold text-secondary" to="/">Dashboard</Link>
             </NavItem>
             <NavItem>
-              <NavLink>
-                <Link className="nav-link font-weight-bold text-secondary" to="/schools">Schools</Link>
-              </NavLink>
+              <Link className="nav-link font-weight-bold text-secondary" to="/schools">Schools</Link>
+            </NavItem>
+            <NavItem className="flex-shrink-1">
+              <Link className="nav-link font-weight-bold text-secondary" to="/schools">
+                <Input type="search" name="search" placeholder="Search school..." />
+              </Link>
             </NavItem>
             <NavItem>
-              <NavLink>
-                <Link className="nav-link font-weight-bold text-secondary" to="/schools">
-                  <Input type="search" name="search" placeholder="Search school..." />
-                </Link>
-              </NavLink>
+              <Button type="submit" className="my-2 border-0 rounded-pill btn-addSchool">
+                <Link className="nav-link text-white font-weight-bold text-nowrap" to="/new-school">Add a School</Link>
+              </Button>
             </NavItem>
-            <NavItem>
-              <NavLink>
-                <Button type="submit" className="my-2 btn px-5 py-1 border-0 rounded-pill">
-                  <Link className="nav-link text-white font-weight-bold" to="/new-school">Add a School</Link>
-                </Button>
-              </NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            <UncontrolledDropdown>
               <DropdownToggle nav className="p-2 fa fa-user-circle-o">
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu>
+                <DropdownItem text >UserName</DropdownItem>
+                <DropdownItem divider />
                 <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

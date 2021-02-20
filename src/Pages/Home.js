@@ -1,3 +1,6 @@
+/* Import Tools */
+import React, { useState, useEffect } from 'react';
+
 /* Import Styles */
 import {
   Col,
@@ -10,7 +13,10 @@ import {
   CardDeck,
 } from 'reactstrap'
 
+/* Import Components */
 import DataAPI from '../Components/Other/DataAPI'
+
+
 
 
 function Home() {
