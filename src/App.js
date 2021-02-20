@@ -26,7 +26,7 @@ import NavBar from './Components/NavBar/index'
 
 export default function App() {
   /* Common Vars */
-  const endpoint = "https://cherry-practices-default-rtdb.firebaseio.com/neoeducate/users/.json"
+  
   let jwt = localStorage.getItem("neojwt")
 
   return (

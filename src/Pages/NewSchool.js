@@ -14,27 +14,36 @@ import {
   ButtonGroup,
 } from 'reactstrap'
 import '../Css/newschool.css';
+import DataAPI from '../Components/Other/DataAPI'
 
 function NewSchool() {
   /* Endpoint */
-  const endpoint = "https://cherry-practices-default-rtdb.firebaseio.com/neoeducate/schools/.json"
+  const endpoint = DataAPI().endpoint + DataAPI().schoolRoute
+  const postAlertOK = { text: "School added succesfully!", style: "alert alert-success mt-3 text-center" }
 
   /* Hooks */
   const [newSchool, setNewSchool] = useState({})
+  const [postStatus, setPostStatus] = useState({})
 
   /* Action of Hooks */
   const changeHandler = event => {
+    setPostStatus({})
     setNewSchool({ ...newSchool, [event.target.name]: event.target.value })
   }
 
   const saveHandler = () => {
     fetch(endpoint, {
       method: 'POST',
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("neojwt")
+      },
       body: JSON.stringify(newSchool),
     }).then(res => res.json())
       .catch(error => console.error('Error', error))
-      .then(response => console.log(response))
+      .then(response => {
+        setPostStatus(postAlertOK)
+      })
   }
 
 
@@ -42,6 +51,7 @@ function NewSchool() {
     <Row>
       <Col xs="12" md={{ size: 6, offset: 3 }} className="news-form p-5 rounded shadow">
         <h1 className="text-center mb-4">Add a new school!</h1>
+        <div className={postStatus.style}>{postStatus.text}</div>
         <Form>
           <FormGroup>
             <Label>Name</Label>
@@ -49,7 +59,7 @@ function NewSchool() {
           </FormGroup>
           <FormGroup>
             <Label>Enrollment Date as Client</Label>
-            <Input type="date" name="enrrollmentDate" onChange={changeHandler} />
+            <Input type="date" name="enrrolmentDate" onChange={changeHandler} />
           </FormGroup>
           <FormGroup>
             <Label>Associated credit card for payments</Label>
@@ -72,6 +82,7 @@ function NewSchool() {
             <input type="reset" value="Clear" className="btn-light px-5 py-2 rounded-pill" />
             <Button className="btn px-5 py-2 rounded-pill" onClick={saveHandler}>Save</Button>
           </div>
+          
         </Form>
       </Col>
     </Row>

@@ -21,6 +21,8 @@ import {
 } from 'reactstrap'
 import '../Css/schools.css';
 
+import DataAPI from '../Components/Other/DataAPI'
+
 function Schools() {
 
 

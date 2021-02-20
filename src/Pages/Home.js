@@ -10,6 +10,9 @@ import {
   CardDeck,
 } from 'reactstrap'
 
+import DataAPI from '../Components/Other/DataAPI'
+
+
 function Home() {
   return (
     <CardDeck>

@@ -12,11 +12,14 @@ import {
   Button
 } from 'reactstrap'
 import '../Css/login.css';
+
+/* Import Components */
 import logo from '../Images/boy.svg'
+import DataAPI from '../Components/Other/DataAPI'
 
 function Login() {
   /* Endpoint */
-  const endpoint = "https://neoeducate-admin-api.vercel.app/auth/login"
+  const endpoint = DataAPI().endpoint + DataAPI().loginRoute
   const authAlert = { text: "Credencial inválida. Volver a intentar", style: "alert alert-danger mt-3" }
 
 
@@ -56,7 +59,7 @@ function Login() {
             <img src={logo} className="mb-2" alt="Neo Educate" />
             <Form className="w-100 my-2 text-brand">
               <Label>Correo electrónico</Label>
-              <Input type="email" className="form-control" placeholder="john@neoeducate.com" name="email" onChange={credentialHandler}/>
+              <Input type="email" className="form-control" placeholder="john@neoeducate.com" name="email" onChange={credentialHandler} />
             </Form>
             <Form className="w-100 my-2 text-brand">
               <Label for="floatingInputValue2">Contraseña</Label>

@@ -1,5 +1,5 @@
 /* Import Tools */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Link
 } from "react-router-dom";
@@ -20,7 +20,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText
 } from 'reactstrap'
 import '../../Css/navbar.css';
 
@@ -37,7 +36,6 @@ function NavBar() {
   }
 
   return (
-
     <Navbar color="light" light expand="md" className="pt-2 pb-4 neo-nav">
       <Container>
         <NavbarBrand>

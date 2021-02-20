@@ -1,5 +1,5 @@
 
-
+import DataAPI from '../Components/Other/DataAPI'
 
 function App() {
   return (
