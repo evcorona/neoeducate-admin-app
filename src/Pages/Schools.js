@@ -34,7 +34,7 @@ function Schools() {
               <Input type="checkbox" name="allCheckboxes" />
             </Form>
             <ButtonGroup className="d-flex align-items-center justify-content-center rounded flex-grow-1">
-              <Button className="flex-fill btn btn-secondary">Name</Button>
+              <Button className="flex-fill btn btn-secondary">Name School</Button>
               <Button className="flex-fill btn btn-secondary">Enrollment Date</Button>
               <Button className="flex-fill btn btn-secondary">Tier</Button>
             </ButtonGroup>

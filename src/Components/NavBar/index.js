@@ -6,10 +6,21 @@ import {
 
 /* Import Styles */
 import {
-  Nav,
   Container,
   Button,
-  Input
+  Input,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText
 } from 'reactstrap'
 import '../../Css/navbar.css';
 
@@ -17,44 +28,61 @@ import '../../Css/navbar.css';
 import logo from '../../Images/logo.svg'
 
 function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+
+  const signOut = () => {
+    localStorage.removeItem("neojwt")
+    window.location.reload()
+  }
+
   return (
-    <Nav className="navbar navbar-expand-lg navbar-light pt-2 pb-4">
+
+    <Navbar color="light" light expand="md" className="pt-2 pb-4 neo-nav">
       <Container>
-        <Link className="navbar-brand" to="/">
-          <img src={logo} alt="Neo Educate" />
-        </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav d-flex flex-row justify-content-around align-items-center w-100">
-            <li className="nav-item">
-              <Link className="nav-link font-weight-bold text-secondary" to="/">Dashboard</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link font-weight-bold text-secondary" to="/schools">Schools</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link font-weight-bold text-secondary" to="/schools">
-                <Input type="search" name="search" placeholder="Search school..." />
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Button type="submit" className="my-2 btn px-5 py-1 border-0 rounded-pill">
-                <Link className="nav-link text-white font-weight-bold" to="/new-school">Add a School</Link>
-              </Button>
-            </li>
-            <li className="nav-item dropdown">
-              <Button className="btn border-0 rounded-circle p-4" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              </Button>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><Link className="dropdown-item" to="/">Sign Out</Link></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+        <NavbarBrand>
+          <Link className="navbar-brand" to="/">
+            <img src={logo} alt="Neo Educate" />
+          </Link>
+        </NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto d-flex flex-md-row justify-content-start align-items-md-center " navbar>
+            <NavItem>
+              <NavLink>
+                <Link className="nav-link font-weight-bold text-secondary" to="/">Dashboard</Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link className="nav-link font-weight-bold text-secondary" to="/schools">Schools</Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link className="nav-link font-weight-bold text-secondary" to="/schools">
+                  <Input type="search" name="search" placeholder="Search school..." />
+                </Link>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink>
+                <Button type="submit" className="my-2 btn px-5 py-1 border-0 rounded-pill">
+                  <Link className="nav-link text-white font-weight-bold" to="/new-school">Add a School</Link>
+                </Button>
+              </NavLink>
+            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav className="p-2 fa fa-user-circle-o">
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>
+        </Collapse>
       </Container>
-    </Nav>
+    </Navbar>
   );
 }
 

@@ -45,7 +45,7 @@ function NewSchool() {
         <Form>
           <FormGroup>
             <Label>Name</Label>
-            <Input type="text" name="name" placeholder="Write here the amazing academy..." onChange={changeHandler} />
+            <Input type="text" name="nameSchool" placeholder="Write here the amazing academy..." onChange={changeHandler} />
           </FormGroup>
           <FormGroup>
             <Label>Enrollment Date as Client</Label>

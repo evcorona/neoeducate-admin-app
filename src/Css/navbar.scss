@@ -1,4 +1,4 @@
-.navbar {
+.neo-nav {
   img {
     width: 100px;
     object-fit: contain;
@@ -28,6 +28,13 @@
 
     &:hover {
       color: unset;
+    }
+  }
+
+  .fa-user-circle-o {
+    &:before {
+      font-size: xx-large;
+      color: #4fa9dd;
     }
   }
 }

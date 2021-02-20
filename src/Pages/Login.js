@@ -56,7 +56,7 @@ function Login() {
             <img src={logo} className="mb-2" alt="Neo Educate" />
             <Form className="w-100 my-2 text-brand">
               <Label>Correo electrónico</Label>
-              <Input type="email" className="form-control" placeholder="john@neoeducate.com" name="email" onChange={credentialHandler} />
+              <Input type="email" className="form-control" placeholder="john@neoeducate.com" name="email" onChange={credentialHandler}/>
             </Form>
             <Form className="w-100 my-2 text-brand">
               <Label for="floatingInputValue2">Contraseña</Label>
