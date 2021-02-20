@@ -1,7 +1,11 @@
-.login-bg .bg-image {
+.login {
+  overflow-x: hidden;
+}
+
+.login .bg-image {
   background-image: url("../Images/og-image.png");
-  -webkit-filter: blur(3px) brightness(90%) opacity(90%);
-          filter: blur(3px) brightness(90%) opacity(90%);
+  -webkit-filter: brightness(80%) opacity(90%);
+          filter: brightness(80%) opacity(90%);
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -10,31 +14,31 @@
   z-index: -1;
 }
 
-.login-bg .login-col {
+.login .login-col {
   height: 100vh;
 }
 
-.login-bg img {
+.login img {
   width: 200px;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.login-bg .login {
+.login .login {
   background-color: white;
 }
 
-.login-bg .text-brand {
+.login .text-brand {
   color: #4FA9DD;
 }
 
-.login-bg .btn {
+.login .btn {
   background-color: #F30098;
   color: white;
   border: none;
 }
 
-.login-bg .btn:hover {
+.login .btn:hover {
   background-color: #da0f8c;
 }
 /*# sourceMappingURL=login.css.map */

@@ -46,13 +46,16 @@ function NewSchool() {
       })
   }
 
+  const handlerSubmit = event => {
+    event.preventDefault();
+  };
 
   return (
     <Row>
       <Col xs="12" md={{ size: 6, offset: 3 }}>
         <h1 className="text-center mb-2">Add a new school!</h1>
         <div className={postStatus.style}>{postStatus.text}</div>
-        <Form className="p-3 news-form rounded shadow">
+        <Form className="p-3 news-form rounded shadow" onSubmit={handlerSubmit}>
           <FormGroup>
             <Label>Name</Label>
             <Input type="text" name="nameSchool" placeholder="Write here the amazing academy..." onChange={changeHandler} />
@@ -80,9 +83,8 @@ function NewSchool() {
           </FormGroup>
           <div className="d-flex flex-row justify-content-between">
             <input type="reset" value="Clear" className="btn-light px-5 py-2 rounded-pill" />
-            <Button className="btn px-5 py-2 rounded-pill" onClick={saveHandler}>Save</Button>
+            <Button type="submit" className="btn px-5 py-2 rounded-pill" onClick={saveHandler}>Save</Button>
           </div>
-          
         </Form>
       </Col>
     </Row>

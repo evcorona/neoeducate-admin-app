@@ -9,7 +9,9 @@ import {
   Form,
   Label,
   Input,
-  Button
+  Button,
+  FormGroup,
+  FormFeedback
 } from 'reactstrap'
 import '../Css/login.css';
 
@@ -20,20 +22,20 @@ import DataAPI from '../Components/Other/DataAPI'
 function Login() {
   /* Endpoint */
   const endpoint = DataAPI().endpoint + DataAPI().loginRoute
-  const authAlert = { text: "Credencial inválida. Volver a intentar", style: "alert alert-danger mt-3" }
+  const authAlert = "is-invalid"
 
 
   /* Hooks */
   const [credential, setCredential] = useState({})
-  const [statusAuth, setStatusAuth] = useState({})
+  const [statusAuth, setStatusAuth] = useState("")
 
   /* Action of Hooks */
   const credentialHandler = event => {
-    setStatusAuth({})
+    setStatusAuth("")
     setCredential({ ...credential, [event.target.name]: event.target.value })
   }
 
-  const authHandler = () => {
+  const authHandler = () => { 
     fetch(endpoint, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
@@ -47,27 +49,35 @@ function Login() {
           return
         }
         setStatusAuth(authAlert)
+        setCredential({password: ""})
       })
   }
 
+  const handlerSubmit = event => {
+    event.preventDefault();
+  };
+
 
   return (
-    <Container fluid className="login-bg">
+    <Container fluid className="login">
       <Row>
         <div class="bg-image"></div>
         <Col sm="12" md={{ size: 8, offset: 2 }} className="d-flex flex-column justify-content-center align-items-center login-col">
-          <div className="login p-5 rounded d-flex flex-column justify-content-center align-items-center shadow">
-            <img src={logo} className="mb-2" alt="Neo Educate" />
-            <Form className="w-100 my-2 text-brand">
-              <Label>Correo electrónico</Label>
-              <Input type="email" className="form-control" placeholder="john@neoeducate.com" name="email" onChange={credentialHandler} />
+          <div className="login rounded d-flex flex-column justify-content-center align-items-center shadow px-4 py-3">
+            <img src={logo} className="m-4" alt="Neo Educate" />
+            <Form onSubmit={handlerSubmit}>
+              <FormGroup className="w-100 m-2 text-brand">
+                <Label>Correo electrónico</Label>
+                <Input type="email" className={`form-control ${statusAuth}`} placeholder="john@neoeducate.com" name="email" onChange={credentialHandler}/>
+                <FormFeedback>Incorrect username or password. Please try again.</FormFeedback>
+              </FormGroup>
+              <FormGroup className="w-100 m-2 text-brand">
+                <Label for="floatingInputValue2">Contraseña</Label>
+                <Input type="password" className={`form-control ${statusAuth}`} placeholder="**********" name="password" onChange={credentialHandler}/>
+                <FormFeedback>Incorrect username or password. Please try again.</FormFeedback>
+              </FormGroup>
+              <Button type="submit" className="m-2 mt-3 btn text-light border-0 btn-login rounded-pill w-100" onClick={authHandler} >Acceder</Button>
             </Form>
-            <Form className="w-100 my-2 text-brand">
-              <Label for="floatingInputValue2">Contraseña</Label>
-              <Input type="password" className="form-control" placeholder="**********" name="password" onChange={credentialHandler} />
-            </Form>
-            <Button className="my-2 btn px-5 py-2 text-light border-0 btn-login rounded-pill w-100" onClick={authHandler} >Acceder</Button>
-            <div className={statusAuth.style}>{statusAuth.text}</div>
           </div>
         </Col>
       </Row>

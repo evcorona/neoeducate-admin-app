@@ -1,7 +1,9 @@
-.login-bg {
+.login {
+  overflow-x: hidden;
+
   .bg-image {
     background-image: url("../Images/og-image.png");
-    filter: blur(3px) brightness(90%) opacity(90%);
+    filter: brightness(80%) opacity(90%);
     background-size: cover;
     background-position: center;
     width: 100vw;
