@@ -11,6 +11,7 @@ import {
   Button,
   Table,
   ButtonGroup,
+  Input
 } from 'reactstrap'
 import '../Css/schools.css';
 
@@ -47,10 +48,11 @@ function Schools() {
 
   return (
     <>
-      <Row className="mb-4">
+      <Row className="mb-2">
         <Col xs="12" className="schools rounded">
           <div className="school-header">
-            <h1 className="text-center mb-4">Enrolled Schools</h1>
+            <h1 className="text-center mb-2">Enrolled Schools</h1>
+            <Input className="d-block d-md-none mb-2" type="search" name="search" placeholder="Search school..." />
             <ButtonGroup className="d-flex align-items-center justify-content-between rounded d-md-none">
               <Button className="btn-filter">Name</Button>
               <Button className="btn-filter">Date</Button>
@@ -78,7 +80,7 @@ function Schools() {
           }
         </Col>
         <Col md="12" className="d-none d-md-block table-container">
-          <Table hover>
+          <Table hover responsive>
             <thead>
               <tr>
                 <th className="btn-filter">#</th>
@@ -87,7 +89,7 @@ function Schools() {
                 <th className="btn-filter">Credit Card</th>
                 <th className="btn-filter">Type of Plan</th>
                 <th className="btn-filter">Quantity of Users</th>
-                <th className="btn-filter">Category</th>
+                <th className="btn-filter">Tier</th>
               </tr>
             </thead>
             <tbody>
@@ -96,7 +98,7 @@ function Schools() {
                   let { nameSchool, enrrolmentDate, typePlan, card, qtyUsers, _id } = schoolsCollection[item]
                   return (
                     <SchoolRow
-                      noItem={parseInt(item)+1}
+                      noItem={parseInt(item) + 1}
                       nameSchool={nameSchool}
                       enrrolmentDate={enrrolmentDate}
                       typePlan={typePlan}

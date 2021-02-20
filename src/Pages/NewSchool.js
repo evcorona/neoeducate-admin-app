@@ -50,7 +50,7 @@ function NewSchool() {
   return (
     <Row>
       <Col xs="12" md={{ size: 6, offset: 3 }}>
-        <h1 className="text-center mb-4">Add a new school!</h1>
+        <h1 className="text-center mb-2">Add a new school!</h1>
         <div className={postStatus.style}>{postStatus.text}</div>
         <Form className="p-3 news-form rounded shadow">
           <FormGroup>

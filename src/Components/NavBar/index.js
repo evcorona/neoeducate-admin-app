@@ -36,7 +36,7 @@ function NavBar() {
   }
 
   return (
-    <Navbar color="white" light expand="md" className="neo-nav mb-3 px-1">
+    <Navbar color="white" light expand="md" className="neo-nav mb-3">
       <Container>
         <Link className="navbar-brand" to="/">
           <img src={logo} alt="Neo Educate" />
@@ -50,7 +50,7 @@ function NavBar() {
             <NavItem>
               <Link className="nav-link font-weight-bold text-secondary" to="/schools">Schools</Link>
             </NavItem>
-            <NavItem className="flex-shrink-1">
+            <NavItem className="flex-shrink-1 d-none d-md-block">
               <Link className="nav-link font-weight-bold text-secondary" to="/schools">
                 <Input type="search" name="search" placeholder="Search school..." />
               </Link>
