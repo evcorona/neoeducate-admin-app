@@ -1,11 +1,3 @@
-.schools .schools-check,
-.schools input[type=checkbox],
-.table-container .schools-check,
-.table-container input[type=checkbox] {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
 .schools .btn-filter,
 .table-container .btn-filter {
   background-color: #4FA9DD;
@@ -33,11 +25,23 @@
   background-color: #FF39B0;
 }
 
+.table-container .widthusers {
+  width: 120px;
+}
+
 .table-container .fa {
   font-size: x-large;
 }
 
 .table-container .fa:hover {
   background-color: lightgrey;
+}
+
+.table-container input,
+.table-container select {
+  border: none;
+  background-color: #e689c0;
+  font-size: smaller;
+  width: 80%;
 }
 /*# sourceMappingURL=schools.css.map */

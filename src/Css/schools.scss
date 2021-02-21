@@ -1,12 +1,6 @@
 .schools,
 .table-container {
 
-  .schools-check,
-  input[type=checkbox] {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
   .btn-filter {
     background-color: #4FA9DD;
     border-color: #4FA9DD;
@@ -35,13 +29,25 @@
 }
 
 .table-container {
+  .widthusers {
+    width: 120px;
+  }
+
   .fa {
     font-size: x-large;
 
     &:hover {
       background-color: lightgrey;
     }
-
   }
+
+  input,
+  select {
+    border: none;
+    background-color: #e689c0;
+    font-size: smaller;
+    width: 80%;
+  }
+
 
 }

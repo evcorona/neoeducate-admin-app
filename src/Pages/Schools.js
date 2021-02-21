@@ -1,8 +1,5 @@
 /* Import Tools */
-import React, { useState, useEffect } from 'react';
-import {
-  Link
-} from "react-router-dom";
+import React, { useState,useEffect } from 'react';
 
 /* Import Styles */
 import {
@@ -15,17 +12,19 @@ import {
 } from 'reactstrap'
 import '../Css/schools.css';
 
+/* Import Components */
 import SchoolCard from '../Components/SchoolCard/index'
 import SchoolRow from '../Components/SchoolRow/index'
 import DataAPI from '../Components/Other/DataAPI'
 import TierValue from '../Components/Other/TierValue'
 
 function Schools() {
-  /* Common vars */
+  /* Common Vars */
   const endpoint = DataAPI().endpoint + DataAPI().schoolRoute
 
   /* Hooks */
   const [schoolsCollection, setSchoolsCollection] = useState({})
+
 
   /* Actions */
   const getSchools = () => {
@@ -80,15 +79,15 @@ function Schools() {
           }
         </Col>
         <Col lg="12" className="d-none d-lg-block table-container">
-          <Table hover responsive striped className="text-center" size="sm">
+          <Table hover responsive striped className="text-center" size="">
             <thead>
               <tr>
                 <th className="btn-filter" scope="col">#</th>
                 <th className="btn-filter" scope="col">School</th>
                 <th className="btn-filter" scope="col">Enrrollment Date</th>
                 <th className="btn-filter" scope="col">Associated Credit Card</th>
-                <th className="btn-filter" scope="col">Plan</th>
-                <th className="btn-filter" scope="col">Users Qty</th>
+                <th className="btn-filter text-nowrap" scope="col">Typer of Plan</th>
+                <th className="btn-filter widthusers" scope="col">Users Qty</th>
                 <th className="btn-filter" scope="col">Tier</th>
                 <th className="btn-filter" scope="col"></th>              
                 <th className="btn-filter" scope="col"></th>     
