@@ -37,7 +37,7 @@ export default function SchoolRow(props) {
     }).then(res => res.json())
       .catch(error => console.error('Error', error))
       .then(response => {
-        setEditStatus(reset)
+        response.success && setEditStatus(reset)
       })
   }
 

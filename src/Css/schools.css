@@ -25,6 +25,13 @@
   background-color: #FF39B0;
 }
 
+.card-container img,
+.table-container img {
+  width: 100px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .table-container .widthusers {
   width: 120px;
 }

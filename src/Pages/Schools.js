@@ -35,7 +35,7 @@ function Schools() {
       })
       .then(response => response.json())
       .then(json => {
-        setSchoolsCollection(json.data)
+        setSchoolsCollection(json.data.reverse())
       })
 
   }
@@ -51,8 +51,8 @@ function Schools() {
         <Col xs="12" className="schools rounded">
           <div className="school-header">
             <h1 className="text-center mb-2">Enrolled Schools</h1>
-            <Input className="d-block d-md-none mb-2" type="search" name="search" placeholder="Search school..." />
-            <ButtonGroup className="d-flex align-items-center justify-content-between rounded d-md-none">
+            <Input className="d-block d-lg-none mb-2" type="search" name="search" placeholder="Search school..." />
+            <ButtonGroup className="d-flex align-items-center justify-content-between rounded d-lg-none">
               <Button className="btn-filter">Name</Button>
               <Button className="btn-filter">Date</Button>
               <Button className="btn-filter">Tier</Button>
