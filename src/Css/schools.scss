@@ -1,4 +1,5 @@
-.schools,.table-container {
+.schools,
+.table-container {
 
   .schools-check,
   input[type=checkbox] {
@@ -18,7 +19,8 @@
 
 }
 
-.card-container{
+.card-container,
+.table-container {
   .tier1 {
     background-color: #FF9E32;
   }
@@ -29,6 +31,17 @@
 
   .tier3 {
     background-color: #FF39B0;
+  }
+}
+
+.table-container {
+  .fa {
+    font-size: x-large;
+
+    &:hover {
+      background-color: lightgrey;
+    }
+
   }
 
 }

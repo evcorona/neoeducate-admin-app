@@ -1,29 +1,43 @@
 .schools .schools-check,
-.schools input[type=checkbox], .table-container .schools-check,
+.schools input[type=checkbox],
+.table-container .schools-check,
 .table-container input[type=checkbox] {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.schools .btn-filter, .table-container .btn-filter {
+.schools .btn-filter,
+.table-container .btn-filter {
   background-color: #4FA9DD;
   border-color: #4FA9DD;
   color: white;
 }
 
-.schools .btn-filter:hover, .table-container .btn-filter:hover {
+.schools .btn-filter:hover,
+.table-container .btn-filter:hover {
   background-color: #187cb6;
 }
 
-.card-container .tier1 {
+.card-container .tier1,
+.table-container .tier1 {
   background-color: #FF9E32;
 }
 
-.card-container .tier2 {
+.card-container .tier2,
+.table-container .tier2 {
   background-color: #002E84;
 }
 
-.card-container .tier3 {
+.card-container .tier3,
+.table-container .tier3 {
   background-color: #FF39B0;
+}
+
+.table-container .fa {
+  font-size: x-large;
+}
+
+.table-container .fa:hover {
+  background-color: lightgrey;
 }
 /*# sourceMappingURL=schools.css.map */

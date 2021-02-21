@@ -62,11 +62,11 @@ function NewSchool() {
           </FormGroup>
           <FormGroup>
             <Label>Enrollment Date as Client</Label>
-            <Input type="date" name="enrrolmentDate" onChange={changeHandler} />
+            <Input type="date" name="enrrolmentDate" onChange={changeHandler} placeholder="YYYY-MM-DD"/>
           </FormGroup>
           <FormGroup>
             <Label>Associated credit card for payments</Label>
-            <Input type="text" name="card" placeholder="XXX-XXX-XXX-XXX" onChange={changeHandler} />
+            <Input type="text" name="card" placeholder="XXX-XXX-XXX-XXX" onChange={changeHandler} minLength="13" maxLength="19"/>
           </FormGroup>
           <FormGroup>
             <Label>Type of plan service</Label>

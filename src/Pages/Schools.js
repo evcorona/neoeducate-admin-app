@@ -62,7 +62,7 @@ function Schools() {
         </Col>
       </Row>
       <Row>
-        <Col xs="12" className="d-md-none card-container">
+        <Col xs="12" className="d-lg-none card-container">
           {
             Object.values(schoolsCollection).map(school => {
               let { nameSchool, enrrolmentDate, typePlan, qtyUsers, _id } = school
@@ -79,17 +79,19 @@ function Schools() {
             })
           }
         </Col>
-        <Col md="12" className="d-none d-md-block table-container">
-          <Table hover responsive>
+        <Col lg="12" className="d-none d-lg-block table-container">
+          <Table hover responsive striped className="text-center" size="sm">
             <thead>
               <tr>
-                <th className="btn-filter">#</th>
-                <th className="btn-filter">School</th>
-                <th className="btn-filter">Enrrollment Date</th>
-                <th className="btn-filter">Credit Card</th>
-                <th className="btn-filter">Type of Plan</th>
-                <th className="btn-filter">Quantity of Users</th>
-                <th className="btn-filter">Tier</th>
+                <th className="btn-filter" scope="col">#</th>
+                <th className="btn-filter" scope="col">School</th>
+                <th className="btn-filter" scope="col">Enrrollment Date</th>
+                <th className="btn-filter" scope="col">Associated Credit Card</th>
+                <th className="btn-filter" scope="col">Plan</th>
+                <th className="btn-filter" scope="col">Users Qty</th>
+                <th className="btn-filter" scope="col">Tier</th>
+                <th className="btn-filter" scope="col"></th>              
+                <th className="btn-filter" scope="col"></th>     
               </tr>
             </thead>
             <tbody>

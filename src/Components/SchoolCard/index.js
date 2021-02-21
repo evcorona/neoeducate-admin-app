@@ -24,10 +24,7 @@ function SchoolCard(props) {
   const tierStyle = tier.toLowerCase().replace(" ","")
 
   return (
-    <Card className="mb-2">
-      <Form className="schools-check d-none d-md-block border-0">
-        <Input type="checkbox" name={id} />
-      </Form>
+    <Card className="mb-2"> 
       <CardBody className="border-0">
         <Link to={`/school-detail?schoolID=${id}`}>
           <CardTitle>
@@ -46,7 +43,7 @@ function SchoolCard(props) {
             <span >{qtyUsers} users</span>
           </CardText>
           <CardText>
-            <span className="pr-3 font-weight-bold">Category:</span>
+            <span className="pr-3 font-weight-bold">Tier</span>
             <span className={`rounded-pill px-3 py-1 text-white ${tierStyle}`}>{tier}</span>
           </CardText>
         </Link>

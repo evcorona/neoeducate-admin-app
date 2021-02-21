@@ -71,12 +71,12 @@ function Login() {
               <FormGroup className="w-100 m-2 text-brand">
                 <Label>E-mail</Label>
                 <Input type="email" className={`form-control ${statusAuth}`} placeholder="john@neoeducate.com" name="email" onChange={credentialHandler} required />
-                <FormFeedback>Incorrect username or password. Please try again.</FormFeedback>
+                <FormFeedback>Incorrect username or password.</FormFeedback>
               </FormGroup>
               <FormGroup className="w-100 m-2 mt-3 text-brand">
                 <Label for="floatingInputValue2">Password</Label>
                 <Input type="password" className={`form-control ${statusAuth}`} placeholder="**********" name="password" onChange={credentialHandler} required />
-                <FormFeedback>Incorrect username or password. Please try again.</FormFeedback>
+                <FormFeedback>Incorrect username or password.</FormFeedback>
               </FormGroup>
               <Button type="submit" className="m-2 mt-3 btn text-light border-0 btn-login rounded-pill w-100" onClick={authHandler}>Sign In</Button>
             </Form>
