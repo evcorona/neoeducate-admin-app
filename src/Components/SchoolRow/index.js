@@ -1,30 +1,44 @@
 /* Import Tools */
-import React, { useState } from 'react';
-
-/* Import Styles */
-import {
-  Input
-} from 'reactstrap'
+import React, { useState, useEffect } from 'react';
 
 /* Import Components */
 import InputChange from '../Other/InputChange'
+import DataAPI from '../Other/DataAPI'
 
 export default function SchoolRow(props) {
-  const { noItem, nameSchool, enrrolmentDate, typePlan, qtyUsers, tier, id, card } = props
-  const tierStyle = tier.toLowerCase().replace(" ", "")
+  /* Endpoint */
+  const endpoint = DataAPI().endpoint + DataAPI().schoolRoute
+  /* Auxiliar Vars */
   const reset = { status: false, save: "d-none" }
   const editMode = { status: true, edit: "d-none" }
 
+  /* Hooks */
   const [editStatus, setEditStatus] = useState(reset)
-  const [schoolSelected, setSchoolSelected] = useState({})
+  const [schoolSelected, setSchoolSelected] = useState(props)
+  const [deleteStatus, setDeleteStatus] = useState(false)
 
+  /* Destructuring */
+  let { noItem, nameSchool, enrrolmentDate, typePlan, qtyUsers, tier, id, card } = schoolSelected
+  const tierStyle = tier.toLowerCase().replace(" ", "")
+
+  /* Actions */
   const editHandler = () => {
     setEditStatus(editMode)
   }
 
   const saveHandler = () => {
-    setEditStatus(reset)
-    console.log("Envio request")
+    fetch((endpoint + id), {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("neojwt")
+      },
+      body: JSON.stringify(schoolSelected),
+    }).then(res => res.json())
+      .catch(error => console.error('Error', error))
+      .then(response => {
+        setEditStatus(reset)
+      })
   }
 
   const changeHandler = event => {
@@ -32,10 +46,20 @@ export default function SchoolRow(props) {
   }
 
   const deleteHandler = () => {
-    console.log("Envio request borrado")
+    fetch((endpoint + id), {
+      method: 'DELETE',
+      headers: {
+        "Authorization": localStorage.getItem("neojwt")
+      },
+    }).then(res => res.json())
+      .catch(error => console.error('Error', error))
+      .then(response => {
+        response.success && setDeleteStatus(true)
+      })
   }
 
   return (
+    !deleteStatus &&
     <tr>
       <th scope="row">{noItem}</th>
       <td>
