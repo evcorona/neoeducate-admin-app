@@ -51,7 +51,7 @@ function NewSchool() {
   };
 
   return (
-    <Row>
+    <Row className="form-animation">
       <Col xs="12" md={{ size: 6, offset: 3 }}>
         <h1 className="text-center mb-2">Add a new school!</h1>
         <div className={postStatus.style}>{postStatus.text}</div>

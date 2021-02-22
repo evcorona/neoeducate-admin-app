@@ -46,9 +46,9 @@ function Schools() {
 
 
   return (
-    <>
+    <div className="page-animation">
       <Row className="mb-2">
-        <Col xs="12" className="schools rounded">
+        <Col xs="12" className="schools">
           <div className="school-header">
             <h1 className="text-center mb-2">Enrolled Schools</h1>
             <Input className="d-block d-lg-none mb-2" type="search" name="search" placeholder="Search school..." />
@@ -115,7 +115,7 @@ function Schools() {
           </Table>
         </Col>
       </Row>
-    </>
+    </div>
   );
 }
 

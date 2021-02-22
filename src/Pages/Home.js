@@ -21,17 +21,18 @@ import DataAPI from '../Components/Other/DataAPI'
 
 function Home() {
   return (
-    <CardDeck>
-      <Card>
-        <CardTitle tag="h5">Total of Schools</CardTitle>
-        <CardText>###</CardText>
-      </Card>
-      <Card>
-        <CardTitle tag="h5">Total of Schools</CardTitle>
-        <CardText>###</CardText>
-      </Card>
-    </CardDeck>
-
+    <div className="page-animation">
+      <CardDeck>
+        <Card>
+          <CardTitle tag="h5">Total of Schools</CardTitle>
+          <CardText>###</CardText>
+        </Card>
+        <Card>
+          <CardTitle tag="h5">Total of Schools</CardTitle>
+          <CardText>###</CardText>
+        </Card>
+      </CardDeck>
+    </div>
   );
 }
 

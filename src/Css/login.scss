@@ -1,5 +1,5 @@
-.login {
-  overflow-x: hidden;
+.login-container {
+  //overflow-x: hidden;
 
   .bg-image {
     background-image: url("../Images/og-image.png");
@@ -11,31 +11,36 @@
     position: fixed;
     z-index: -1;
   }
-  
+
   .login-col {
     height: 90vh;
   }
 
-  img {
-    width: 200px;
-    object-fit: contain;
-  }
 
   .login {
-    background-color: white;
-  }
+    background-color: rgba(255, 255, 255, 0.844);
 
-  .text-brand {
-    color: #4FA9DD;
-  }
 
-  .btn {
-    background-color: #F30098;
-    color: white;
-    border: none;
+    img {
+      width: 200px;
+      object-fit: contain;
+    }
 
-    &:hover {
-      background-color: #da0f8c;
+    .text-brand {
+      color: #4FA9DD;
+    }
+
+    .btn {
+      background-color: #F30098;
+      color: white;
+      border: none;
+
+      &:hover {
+        background-color: #da0f8c;
+      }
     }
   }
+
+
+
 }

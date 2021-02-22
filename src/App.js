@@ -42,7 +42,7 @@ export default function App() {
                 <Row>
                   <Container>
                       <Route exact path="/">
-                        <Home />
+                        <Home/>
                       </Route>
                       <Route path="/schools">
                         <School/>

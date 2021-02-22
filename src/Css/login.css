@@ -1,8 +1,4 @@
-.login {
-  overflow-x: hidden;
-}
-
-.login .bg-image {
+.login-container .bg-image {
   background-image: url("../Images/og-image.png");
   -webkit-filter: brightness(80%) opacity(90%);
           filter: brightness(80%) opacity(90%);
@@ -14,31 +10,31 @@
   z-index: -1;
 }
 
-.login .login-col {
+.login-container .login-col {
   height: 90vh;
 }
 
-.login img {
+.login-container .login {
+  background-color: rgba(255, 255, 255, 0.844);
+}
+
+.login-container .login img {
   width: 200px;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.login .login {
-  background-color: white;
-}
-
-.login .text-brand {
+.login-container .login .text-brand {
   color: #4FA9DD;
 }
 
-.login .btn {
+.login-container .login .btn {
   background-color: #F30098;
   color: white;
   border: none;
 }
 
-.login .btn:hover {
+.login-container .login .btn:hover {
   background-color: #da0f8c;
 }
 /*# sourceMappingURL=login.css.map */

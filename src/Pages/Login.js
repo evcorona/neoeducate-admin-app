@@ -61,11 +61,11 @@ function Login() {
 
 
   return (
-    <Container fluid className="login">
+    <Container fluid className="login-container">
       <Row>
         <div class="bg-image"></div>
         <Col sm="12" md={{ size: 8, offset: 2 }} className="d-flex flex-column justify-content-center align-items-center login-col">
-          <div className="login rounded d-flex flex-column justify-content-center align-items-center shadow px-4 py-3">
+          <div className="login form-animation rounded d-flex flex-column justify-content-center align-items-center shadow px-4 py-3">
             <img src={logo} className="m-2 mt-3" alt="Neo Educate" />
             <Form onSubmit={handlerSubmit}>
               <FormGroup className="w-100 m-2 text-brand">
