@@ -1,5 +1,8 @@
 /* Import Tools */
 import React, { useState, useEffect } from 'react';
+import {
+  Link
+} from "react-router-dom";
 
 /* Import Styles */
 import {
@@ -38,7 +41,7 @@ export default function SchoolDetail() {
     const urlParams = new URLSearchParams(window.location.search);
     const schoolID = urlParams.get('schoolID');
 
-    fetch(endpoint+schoolID, {
+    fetch(endpoint + schoolID, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +60,7 @@ export default function SchoolDetail() {
 
   const saveHandler = () => {
 
-    fetch(endpoint+_id, {
+    fetch(endpoint + _id, {
       method: 'PATCH',
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +75,7 @@ export default function SchoolDetail() {
   }
 
   const deleteHandler = () => {
-    fetch(endpoint+_id, {
+    fetch(endpoint + _id, {
       method: 'DELETE',
       headers: {
         "Authorization": localStorage.getItem("neojwt")
@@ -88,7 +91,6 @@ export default function SchoolDetail() {
     <Row className="form-animation">
       <Col xs="12" md={{ size: 6, offset: 3 }}>
         <h1 className="text-center mb-2">Edit Mode</h1>
-        {/*   <div className={editStatus.style}>{editStatus.text}</div> */}
         <Form className="p-3 news-form rounded shadow" onSubmit={handlerSubmit}>
           <FormGroup>
             <Label>Name</Label>
@@ -115,8 +117,12 @@ export default function SchoolDetail() {
             <Input type="number" name="qtyUsers" min="0" step="10" placeholder="Set the number of users..." onChange={changeHandler} defaultValue={qtyUsers} />
           </FormGroup>
           <div className="d-flex flex-row justify-content-between">
-            <Button type="submit" className="btn px-5 py-2 rounded-pill" onClick={saveHandler} >Update</Button>
-            <Button type="submit" className="btn px-5 py-2 rounded-pill" onClick={deleteHandler} >Delete</Button>
+            <Link to="/schools">
+              <Button type="submit" className="btn px-5 py-2 rounded-pill" onClick={saveHandler} >Update</Button>
+            </Link>
+            <Link to="/schools">
+              <Button type="submit" className="btn px-5 py-2 rounded-pill" onClick={deleteHandler} >Delete</Button>
+            </Link>
           </div>
         </Form>
       </Col>

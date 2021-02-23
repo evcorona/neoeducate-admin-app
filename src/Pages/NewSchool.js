@@ -14,37 +14,43 @@ import {
   ButtonGroup,
 } from 'reactstrap'
 import '../Css/newschool.css';
+
+/* Components */
 import DataAPI from '../Components/Other/DataAPI'
+import ModalNewSchool from '../Components/ModalNewSchool/index'
 
 function NewSchool() {
   /* Endpoint */
   const endpoint = DataAPI().endpoint + DataAPI().schoolRoute
-  const postAlertOK = { text: "School added succesfully!", style: "alert alert-success mt-3 text-center" }
 
   /* Hooks */
   const [newSchool, setNewSchool] = useState({})
-  const [postStatus, setPostStatus] = useState({})
 
   /* Action of Hooks */
   const changeHandler = event => {
-    setPostStatus({})
     setNewSchool({ ...newSchool, [event.target.name]: event.target.value })
   }
 
   const saveHandler = () => {
-    fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("neojwt")
-      },
-      body: JSON.stringify(newSchool),
-    }).then(res => res.json())
-      .catch(error => console.error('Error', error))
-      .then(response => {
-        setPostStatus(postAlertOK)
-      })
+    if (Object.keys(newSchool).length === 5) {
+      fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": localStorage.getItem("neojwt")
+        },
+        body: JSON.stringify(newSchool),
+      }).then(res => res.json())
+        .catch(error => console.error('Error', error))
+        .then(response => {
+          toggle()
+        })
+
+    }
   }
+
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   const handlerSubmit = event => {
     event.preventDefault();
@@ -52,9 +58,12 @@ function NewSchool() {
 
   return (
     <Row className="form-animation">
-      <Col xs="12" md={{ size: 6, offset: 3 }}>
+      <ModalNewSchool
+        modal={modal}
+        toggle={toggle}
+      />
+      <Col xs="12" md={{ size: 8, offset: 2 }}>
         <h1 className="text-center mb-2">Add a new school!</h1>
-        <div className={postStatus.style}>{postStatus.text}</div>
         <Form className="p-3 news-form rounded shadow" onSubmit={handlerSubmit}>
           <FormGroup>
             <Label>Name</Label>
@@ -62,15 +71,15 @@ function NewSchool() {
           </FormGroup>
           <FormGroup>
             <Label>Enrollment Date as Client</Label>
-            <Input type="date" name="enrrolmentDate" onChange={changeHandler} placeholder="YYYY-MM-DD"/>
+            <Input type="date" name="enrrolmentDate" onChange={changeHandler} placeholder="YYYY-MM-DD" />
           </FormGroup>
           <FormGroup>
             <Label>Associated credit card for payments</Label>
-            <Input type="text" name="card" placeholder="XXX-XXX-XXX-XXX" onChange={changeHandler} minLength="13" maxLength="19"/>
+            <Input type="number" name="card" placeholder="XXX-XXX-XXX-XXX" onChange={changeHandler} minLength="13" maxLength="19" />
           </FormGroup>
           <FormGroup>
             <Label>Type of plan service</Label>
-            <Input type="select" name="typePlan" onChange={changeHandler}>
+            <Input type="select" name="typePlan" onChange={changeHandler} required>
               <option disabled selected>Select an option of the list...</option>
               <option name="plan1">Plan 1</option>
               <option name="plan2">Plan 2</option>
@@ -83,7 +92,7 @@ function NewSchool() {
           </FormGroup>
           <div className="d-flex flex-row justify-content-between">
             <input type="reset" value="Clear" className="btn-light px-5 py-2 rounded-pill" />
-            <Button type="submit" className="btn px-5 py-2 rounded-pill" onClick={saveHandler}>Save</Button>
+            <Button className="btn px-5 py-2 rounded-pill" onClick={saveHandler}>Save</Button>
           </div>
         </Form>
       </Col>
