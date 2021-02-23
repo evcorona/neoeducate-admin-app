@@ -11,8 +11,8 @@ a:hover {
 .page-animation {
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  -webkit-animation-duration: 500ms;
-          animation-duration: 500ms;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
   -webkit-animation-delay: 0ms;
           animation-delay: 0ms;
   -webkit-animation-iteration-count: 1;
@@ -25,8 +25,8 @@ a:hover {
 @-webkit-keyframes left-reveal {
   from {
     opacity: 0;
-    -webkit-transform: translate3d(40px, 0px, 0px);
-            transform: translate3d(40px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 40px, 0px);
+            transform: translate3d(0px, 40px, 0px);
   }
   to {
     opacity: 1;
@@ -38,8 +38,8 @@ a:hover {
 @keyframes left-reveal {
   from {
     opacity: 0;
-    -webkit-transform: translate3d(40px, 0px, 0px);
-            transform: translate3d(40px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 40px, 0px);
+            transform: translate3d(0px, 40px, 0px);
   }
   to {
     opacity: 1;

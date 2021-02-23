@@ -45,10 +45,10 @@ function NavBar() {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="w-100 d-flex align-items-center justify-content-around" navbar>
             <NavItem>
-              <Link className="nav-link font-weight-bold text-secondary" to="/">Dashboard</Link>
+              <Link className="nav-link font-weight-bold text-secondary" to="/" onClick={toggle}>Dashboard</Link>
             </NavItem>
             <NavItem>
-              <Link className="nav-link font-weight-bold text-secondary" to="/schools">Schools</Link>
+              <Link className="nav-link font-weight-bold text-secondary" to="/schools" onClick={toggle}>Schools</Link>
             </NavItem>
             <NavItem className="flex-shrink-1 d-none d-md-block">
               <Link className="nav-link font-weight-bold text-secondary" to="/schools">
@@ -57,7 +57,7 @@ function NavBar() {
             </NavItem>
             <NavItem>
               <Button type="submit" className="my-2 border-0 rounded-pill btn-addSchool">
-                <Link className="nav-link text-white font-weight-bold text-nowrap" to="/new-school">Add a School</Link>
+                <Link className="nav-link text-white font-weight-bold text-nowrap" to="/new-school" onClick={toggle}>Add a School</Link>
               </Button>
             </NavItem>
             <UncontrolledDropdown>
