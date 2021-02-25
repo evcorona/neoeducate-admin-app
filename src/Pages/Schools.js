@@ -51,12 +51,12 @@ function Schools() {
         <Col xs="12" className="schools">
           <div className="school-header">
             <h1 className="text-center mb-2">Enrolled Schools</h1>
-            <Input className="d-block d-lg-none mb-2" type="search" name="search" placeholder="Search school..." />
+          {/*   <Input className="d-block d-lg-none mb-2" type="search" name="search" placeholder="Search school..." />
             <ButtonGroup className="d-flex align-items-center justify-content-between rounded d-lg-none">
               <Button className="btn-filter">Name</Button>
               <Button className="btn-filter">Date</Button>
               <Button className="btn-filter">Tier</Button>
-            </ButtonGroup>
+            </ButtonGroup> */}
           </div>
         </Col>
       </Row>
@@ -104,7 +104,6 @@ function Schools() {
                       enrrolmentDate={enrrolmentDate}
                       typePlan={typePlan}
                       qtyUsers={qtyUsers}
-                      tier={TierValue(qtyUsers)}
                       id={_id}
                       card={card}
                     />

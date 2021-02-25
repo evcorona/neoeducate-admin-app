@@ -24,7 +24,6 @@ function Login() {
   const endpoint = DataAPI().endpoint + DataAPI().loginRoute
   const authAlert = "is-invalid"
 
-
   /* Hooks */
   const [credential, setCredential] = useState({})
   const [statusAuth, setStatusAuth] = useState("")

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 /* Import Components */
 import InputChange from '../Other/InputChange'
 import DataAPI from '../Other/DataAPI'
+import TierValue from '../Other/TierValue'
 
 export default function SchoolRow(props) {
   /* Endpoint */
@@ -18,7 +19,8 @@ export default function SchoolRow(props) {
   const [deleteStatus, setDeleteStatus] = useState(false)
 
   /* Destructuring */
-  let { noItem, nameSchool, enrrolmentDate, typePlan, qtyUsers, tier, id, card } = schoolSelected
+  let { noItem, nameSchool, enrrolmentDate, typePlan, qtyUsers, id, card } = schoolSelected
+  let tier=TierValue(qtyUsers)
   const tierStyle = tier.toLowerCase().replace(" ", "")
 
   /* Actions */

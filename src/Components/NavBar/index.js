@@ -36,28 +36,31 @@ function NavBar() {
   }
 
   return (
-    <Navbar color="white" light expand="md" className="neo-nav mb-3">
+    <Navbar color="white" light expand="md" className="neo-nav">
       <Container>
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand d-block d-md-none" to="/">
           <img src={logo} alt="Neo Educate" />
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="w-100 d-flex align-items-center justify-content-around" navbar>
+          <Nav className="w-100 d-flex align-items-center justify-content-between" navbar>
+            <Link className="navbar-brand d-none d-md-block" to="/">
+              <img src={logo} alt="Neo Educate" />
+            </Link>
             <NavItem>
               <Link className="nav-link font-weight-bold text-secondary" to="/" onClick={toggle}>Dashboard</Link>
             </NavItem>
             <NavItem>
-              <Link className="nav-link font-weight-bold text-secondary" to="/schools" onClick={toggle}>Schools</Link>
+              <Link className="nav-link  font-weight-bold text-secondary" to="/schools" onClick={toggle}>Schools</Link>
             </NavItem>
-            <NavItem className="flex-shrink-1 d-none d-md-block">
+{/*             <NavItem className="flex-shrink-1 d-none d-md-block">
               <Link className="nav-link font-weight-bold text-secondary" to="/schools">
                 <Input type="search" name="search" placeholder="Search school..." />
               </Link>
-            </NavItem>
+            </NavItem> */}
             <NavItem>
               <Button type="submit" className="my-2 border-0 rounded-pill btn-addSchool">
-                <Link className="nav-link text-white font-weight-bold text-nowrap" to="/new-school" onClick={toggle}>Add a School</Link>
+                <Link className="text-white font-weight-bold text-nowrap" to="/new-school" onClick={toggle}>Add a School</Link>
               </Button>
             </NavItem>
             <UncontrolledDropdown>

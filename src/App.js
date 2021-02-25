@@ -38,7 +38,7 @@ export default function App() {
             <NavBar />
             {/* ROUTES TO PAGES */}
             <Switch>
-              <Container fluid>
+              <Container fluid className="mt-3">
                 <Row>
                   <Container>
                       <Route exact path="/">
