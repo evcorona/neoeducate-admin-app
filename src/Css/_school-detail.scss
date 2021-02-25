@@ -1,0 +1,11 @@
+.editmode-form {
+  background-color: rgb(163, 163, 163);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  .btn-delete{
+    background-color: black;
+    &:hover{
+      background-color: rgb(228, 71, 71);
+    }
+  }
+}

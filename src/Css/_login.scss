@@ -1,5 +1,4 @@
 .login-container {
-
   .bg-image {
     background-image: url("../Images/og-image.png");
     filter: brightness(80%) opacity(90%);
@@ -15,10 +14,8 @@
     height: 90vh;
   }
 
-
   .login {
     background-color: rgba(255, 255, 255, 0.844);
-
 
     img {
       width: 200px;
@@ -26,20 +23,7 @@
     }
 
     .text-brand {
-      color: #4FA9DD;
-    }
-
-    .btn {
-      background-color: #F30098;
-      color: white;
-      border: none;
-
-      &:hover {
-        background-color: #da0f8c;
-      }
+      color: $brand-color-1;
     }
   }
-
-
-
 }

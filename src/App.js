@@ -1,18 +1,14 @@
 /* Import Tools */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 /* Import Styles */
-import {
-  Container,
-  Row,
-} from 'reactstrap'
-import './App.css';
+import { Container, Row } from 'reactstrap'
+import './Css/App.css';
 
 /* Import Pages */
 import Login from './Pages/Login'
@@ -23,46 +19,49 @@ import SchoolDetail from './Pages/SchoolDetail'
 
 /* Import Components */
 import NavBar from './Components/NavBar/index'
+import ModalContinue from './Components/ModalContinue/index'
 
 export default function App() {
-  /* Common Vars */
-  
+  /* Hooks */
+  const [modal, setModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState({});
+
+  /* Actions */
+  const toggle = () => setModal(!modal);
+
+  /* Auxiliar Vars */
   let jwt = localStorage.getItem("neojwt")
 
   return (
     <div className="App">
       <Router>
-        {/* FORCING LOGIN */}
         {jwt ? (
           <>
+            <ModalContinue modal={modal} toggle={toggle} message={modalMessage}/>
             <NavBar />
-            {/* ROUTES TO PAGES */}
             <Switch>
               <Container fluid className="mt-3">
                 <Row>
                   <Container>
-                      <Route exact path="/">
-                        <Home />
-                      </Route>
-                      <Route path="/schools">
-                        <School/>
-                      </Route>
-                      <Route path="/school-detail">
-                        <SchoolDetail/>
-                      </Route>    
-                      <Route path="/new-school">
-                        <NewSchool/>
-                      </Route>             
+                    <Route exact path="/">
+                      <Home />
+                    </Route>
+                    <Route path="/schools">
+                      <School />
+                    </Route>
+                    <Route path="/school-detail">
+                      <SchoolDetail toggle={toggle} setModalMessage={setModalMessage} />
+                    </Route>
+                    <Route path="/new-school">
+                      <NewSchool toggle={toggle} setModalMessage={setModalMessage} />
+                    </Route>
                   </Container>
                 </Row>
               </Container>
             </Switch>
           </>
         ) : <Login />}
-
       </Router>
-
-
     </div>
   );
 }

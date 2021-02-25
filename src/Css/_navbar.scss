@@ -1,0 +1,13 @@
+.neo-nav {
+  img {
+    width: 69px;
+    object-fit: contain;
+  }
+
+  .fa-user-circle-o {
+    &:before {
+      font-size: xx-large;
+      color: $brand-color-1;
+    }
+  }
+}

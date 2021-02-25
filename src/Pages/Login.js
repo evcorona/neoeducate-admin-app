@@ -13,22 +13,22 @@ import {
   FormGroup,
   FormFeedback
 } from 'reactstrap'
-import '../Css/login.css';
 
 /* Import Components */
-import logo from '../Images/logo.svg'
-import DataAPI from '../Components/Other/DataAPI'
+import Logo from '../Images/logo.svg'
+import Endpoint from '../Components/Endpoint/index'
 
-function Login() {
-  /* Endpoint */
-  const endpoint = DataAPI().endpoint + DataAPI().loginRoute
-  const authAlert = "is-invalid"
-
+export default function Login() {
   /* Hooks */
   const [credential, setCredential] = useState({})
   const [statusAuth, setStatusAuth] = useState("")
 
+  /* Auxiliar Vars */
+  const authAlert = "is-invalid"
+
   /* Action of Hooks */
+  const handlerSubmit = event => { event.preventDefault(); };
+  
   const credentialHandler = event => {
     setStatusAuth("")
     setCredential({ ...credential, [event.target.name]: event.target.value })
@@ -36,7 +36,7 @@ function Login() {
 
   const authHandler = () => {
     if (Object.keys(credential).length === 2) {
-      fetch(endpoint, {
+      fetch(Endpoint().login, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credential),
@@ -51,33 +51,29 @@ function Login() {
           setStatusAuth(authAlert)
         })
     }
-    else {setStatusAuth(authAlert)}
+    else { setStatusAuth(authAlert) }
   }
 
-  const handlerSubmit = event => {
-    event.preventDefault();
-  };
-
-
+  /* Render */
   return (
     <Container fluid className="login-container">
       <Row>
         <div class="bg-image"></div>
         <Col sm="12" md={{ size: 8, offset: 2 }} className="d-flex flex-column justify-content-center align-items-center login-col">
-          <div className="login form-animation rounded d-flex flex-column justify-content-center align-items-center shadow px-4 py-3">
-            <img src={logo} className="m-2 mt-3" alt="Neo Educate" />
+          <div className="login bottom-animation rounded d-flex flex-column justify-content-center align-items-center shadow px-4 py-3">
+            <img src={Logo} className="m-2 mt-3" alt="Neo Educate" />
             <Form onSubmit={handlerSubmit} className="p-2">
               <FormGroup className="text-brand">
                 <Label>E-mail</Label>
-                <Input type="email" className={`form-control ${statusAuth}`} placeholder="john@neoeducate.com" name="email" onChange={credentialHandler}/>
+                <Input type="email" className={`form-control ${statusAuth}`} placeholder="john@neoeducate.com" name="email" onChange={credentialHandler} />
                 <FormFeedback>Try admin@admin.com</FormFeedback>
               </FormGroup>
               <FormGroup className="text-brand">
                 <Label for="floatingInputValue2">Password</Label>
-                <Input type="password" className={`form-control ${statusAuth}`} placeholder="**********" name="password" onChange={credentialHandler}/>
+                <Input type="password" className={`form-control ${statusAuth}`} placeholder="**********" name="password" onChange={credentialHandler} />
                 <FormFeedback>Try admin</FormFeedback>
               </FormGroup>
-              <Button type="submit" className="mt-1 btn text-light border-0 btn-login rounded-pill w-100" onClick={authHandler}>Sign In</Button>
+              <Button type="submit" className="mt-1 btn-brand text-light font-weight-bold border-0 btn-login rounded-pill w-100" onClick={authHandler}>Sign In</Button>
             </Form>
           </div>
         </Col>
@@ -85,5 +81,3 @@ function Login() {
     </Container>
   );
 }
-
-export default Login;

@@ -1,32 +1,25 @@
 /* Import Tools */
 import React, { useState } from 'react';
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 /* Import Styles */
 import {
   Container,
-  Button,
-  Input,
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap'
-import '../../Css/navbar.css';
 
 /* Import Components */
 import logo from '../../Images/logo.svg'
 
-function NavBar() {
+export default function NavBar(props) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -39,35 +32,31 @@ function NavBar() {
     <Navbar color="white" light expand="md" className="neo-nav">
       <Container>
         <Link className="navbar-brand d-block d-md-none" to="/">
-          <img src={logo} alt="Neo Educate" />
+          <img src={logo} alt="NeoEducate" />
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="w-100 d-flex align-items-center justify-content-between" navbar>
             <Link className="navbar-brand d-none d-md-block" to="/">
-              <img src={logo} alt="Neo Educate" />
+              <img src={logo} alt="NeoEducate" />
             </Link>
             <NavItem>
-              <Link className="nav-link font-weight-bold text-secondary" to="/" onClick={toggle}>Dashboard</Link>
+              <Link className="nav-link font-weight-bold text-secondary d-none d-md-block" to="/">Dashboard</Link>
+              <Link className="nav-link font-weight-bold text-secondary d-md-none" to="/" onClick={toggle}>Dashboard</Link>
             </NavItem>
             <NavItem>
-              <Link className="nav-link  font-weight-bold text-secondary" to="/schools" onClick={toggle}>Schools</Link>
+              <Link className="nav-link font-weight-bold text-secondary d-none d-md-block" to="/schools">Schools</Link>
+              <Link className="nav-link font-weight-bold text-secondary d-md-none" to="/schools" onClick={toggle}>Schools</Link>
             </NavItem>
-{/*             <NavItem className="flex-shrink-1 d-none d-md-block">
-              <Link className="nav-link font-weight-bold text-secondary" to="/schools">
-                <Input type="search" name="search" placeholder="Search school..." />
-              </Link>
-            </NavItem> */}
             <NavItem>
-              <Button type="submit" className="my-2 border-0 rounded-pill btn-addSchool">
-                <Link className="text-white font-weight-bold text-nowrap" to="/new-school" onClick={toggle}>Add a School</Link>
-              </Button>
+              <Link className="btn btn-brand my-2 border-0 rounded-pill btn-addSchool text-white font-weight-bold text-nowrap d-none d-md-block" to="/new-school">Add a School</Link>
+              <Link className="btn btn-brand my-2 border-0 rounded-pill btn-addSchool text-white font-weight-bold text-nowrap d-md-none" to="/new-school" onClick={toggle}>Add a School</Link>
             </NavItem>
             <UncontrolledDropdown>
               <DropdownToggle nav className="p-2 fa fa-user-circle-o">
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem text >UserName</DropdownItem>
+                <DropdownItem text >Hello!</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
               </DropdownMenu>
@@ -78,5 +67,3 @@ function NavBar() {
     </Navbar>
   );
 }
-
-export default NavBar;

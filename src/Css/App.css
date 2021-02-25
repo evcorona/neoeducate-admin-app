@@ -1,0 +1,202 @@
+.login-container .bg-image {
+  background-image: url("../Images/og-image.png");
+  -webkit-filter: brightness(80%) opacity(90%);
+          filter: brightness(80%) opacity(90%);
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+}
+
+.login-container .login-col {
+  height: 90vh;
+}
+
+.login-container .login {
+  background-color: rgba(255, 255, 255, 0.844);
+}
+
+.login-container .login img {
+  width: 200px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.login-container .login .text-brand {
+  color: #4FA9DD;
+}
+
+.neo-nav img {
+  width: 69px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.neo-nav .fa-user-circle-o:before {
+  font-size: xx-large;
+  color: #4FA9DD;
+}
+
+.schools .btn-filter,
+.table-container .btn-filter {
+  background-color: #4FA9DD;
+  border-color: #4FA9DD;
+  color: white;
+}
+
+.schools .btn-filter:hover,
+.table-container .btn-filter:hover {
+  background-color: #187cb6;
+}
+
+.card-container .tier1,
+.table-container .tier1 {
+  background-color: #FF9E32;
+}
+
+.card-container .tier2,
+.table-container .tier2 {
+  background-color: #002E84;
+}
+
+.card-container .tier3,
+.table-container .tier3 {
+  background-color: #FF39B0;
+}
+
+.card-container img,
+.table-container img {
+  width: 100px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.table-container .widthusers {
+  width: 120px;
+}
+
+.table-container .fa {
+  font-size: x-large;
+}
+
+.table-container .fa:hover {
+  background-color: lightgrey;
+}
+
+.table-container input,
+.table-container select {
+  border: none;
+  background-color: lightgrey;
+  font-size: smaller;
+  width: 80%;
+}
+
+.editmode-form {
+  background-color: #a3a3a3;
+  color: white;
+  font-weight: bold;
+}
+
+.editmode-form .btn-delete {
+  background-color: black;
+}
+
+.editmode-form .btn-delete:hover {
+  background-color: #e44747;
+}
+
+.modal-footer .btn-add {
+  background-color: #F30098;
+  border-color: #F30098;
+}
+
+.modal-footer .btn-add:hover {
+  background-color: #da0f8c;
+  border-color: #da0f8c;
+}
+
+.news-form {
+  background-color: #002B87;
+  color: white;
+  font-weight: bold;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
+a:hover {
+  color: unset;
+  text-decoration: unset;
+}
+
+.bottom-animation {
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-duration: 900ms;
+          animation-duration: 900ms;
+  -webkit-animation-delay: 0ms;
+          animation-delay: 0ms;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  opacity: 1;
+  -webkit-animation-name: bottom-reveal;
+          animation-name: bottom-reveal;
+}
+
+@-webkit-keyframes bottom-reveal {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0px, 40px, 0px);
+            transform: translate3d(0px, 40px, 0px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes bottom-reveal {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0px, 40px, 0px);
+            transform: translate3d(0px, 40px, 0px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.btn-brand {
+  background-color: #F30098;
+  color: white;
+  border: none;
+}
+
+.btn-brand:hover {
+  background-color: #da0f8c;
+}
+
+.btn-brand-2 {
+  background-color: #4fa9dd;
+  color: white;
+  border: none;
+}
+
+.btn-brand-2:hover {
+  background-color: #1d9ce6;
+}
+/*# sourceMappingURL=App.css.map */

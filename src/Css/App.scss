@@ -1,0 +1,65 @@
+@import '_variables.scss';
+@import '_login.scss';
+@import '_navbar.scss';
+@import '_schools.scss';
+@import '_school-detail.scss';
+@import '_modal-continue.scss';
+@import '_newschool.scss';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: unset;
+  text-decoration: unset;
+
+  &:hover {
+    color: unset;
+    text-decoration: unset;
+  }
+}
+
+.bottom-animation {
+  animation-fill-mode: both;
+  animation-duration: 900ms;
+  animation-delay: 0ms;
+  animation-iteration-count: 1;
+  opacity: 1;
+  animation-name: bottom-reveal;
+}
+
+@keyframes bottom-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0px, 40px, 0px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.btn-brand {
+  background-color: $color-button;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: $color-button-hover;
+  }
+}
+
+.btn-brand-2{
+  background-color: $color-button2;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: $color-button-hover2;
+  }
+}

@@ -16,7 +16,6 @@ import {
   FormText,
   ButtonGroup,
 } from 'reactstrap'
-import '../Css/newschool.css';
 import DataAPI from '../Components/Other/DataAPI'
 
 export default function SchoolDetail() {
@@ -88,10 +87,10 @@ export default function SchoolDetail() {
   }
 
   return (
-    <Row className="form-animation">
-      <Col xs="12" md={{ size: 6, offset: 3 }}>
+    <Row className="bottom-animation">
+      <Col xs="12" md={{ size: 7, offset: 3 }}>
         <h1 className="text-center mb-2">Edit Mode</h1>
-        <Form className="p-3 news-form rounded shadow" onSubmit={handlerSubmit}>
+        <Form className="p-3 editmode-form rounded shadow" onSubmit={handlerSubmit}>
           <FormGroup>
             <Label>Name</Label>
             <Input type="text" name="nameSchool" placeholder="Write here the amazing academy..." onChange={changeHandler} defaultValue={nameSchool} />
@@ -116,12 +115,12 @@ export default function SchoolDetail() {
             <Label>Quantity of users</Label>
             <Input type="number" name="qtyUsers" min="0" step="10" placeholder="Set the number of users..." onChange={changeHandler} defaultValue={qtyUsers} />
           </FormGroup>
-          <div className="d-flex flex-row justify-content-between">
-            <Link to="/schools">
-              <Button type="submit" className="btn px-5 py-2 rounded-pill" onClick={saveHandler} >Update</Button>
+          <div className="d-flex flex-row justify-content-center px-1">
+            <Link to="/schools" type="submit" className="btn btn-delete rounded-pill text-white border-0 m-1 px-4 font-weight-bold" onClick={deleteHandler}>
+              Delete
             </Link>
-            <Link to="/schools">
-              <Button type="submit" className="btn px-5 py-2 rounded-pill" onClick={deleteHandler} >Delete</Button>
+            <Link to="/schools" type="submit" className="btn btn-brand-2 m-1 rounded-pill text-white font-weight-bold w-100" onClick={saveHandler} >
+              Update
             </Link>
           </div>
         </Form>

@@ -1,0 +1,10 @@
+.modal-footer {
+  .btn-add {
+    background-color: $color-button;
+    border-color: $color-button;
+    &:hover{    
+      background-color: $color-button-hover;
+      border-color: $color-button-hover;
+    }
+  }
+}

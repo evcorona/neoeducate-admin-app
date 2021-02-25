@@ -1,11 +1,9 @@
 .schools,
 .table-container {
-
   .btn-filter {
     background-color: #4FA9DD;
     border-color: #4FA9DD;
     color: white;
-
     &:hover {
       background-color: #187cb6;
     }
@@ -27,7 +25,7 @@
     background-color: #FF39B0;
   }
 
-  img{
+  img {
     width: 100px;
     object-fit: contain;
   }
@@ -50,10 +48,9 @@
   input,
   select {
     border: none;
-    background-color: #e689c0;
+    background-color: lightgrey;
     font-size: smaller;
     width: 80%;
   }
-
 
 }

@@ -10,7 +10,6 @@ import {
   ButtonGroup,
   Input
 } from 'reactstrap'
-import '../Css/schools.css';
 
 /* Import Components */
 import SchoolCard from '../Components/SchoolCard/index'
@@ -46,7 +45,7 @@ function Schools() {
 
 
   return (
-    <div className="page-animation">
+    <div className="bottom-animation">
       <Row className="mb-2">
         <Col xs="12" className="schools">
           <div className="school-header">
