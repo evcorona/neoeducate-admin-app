@@ -35,7 +35,6 @@ function Login() {
   }
 
   const authHandler = () => {
-
     if (Object.keys(credential).length === 2) {
       fetch(endpoint, {
         method: 'POST',
@@ -52,6 +51,7 @@ function Login() {
           setStatusAuth(authAlert)
         })
     }
+    else {setStatusAuth(authAlert)}
   }
 
   const handlerSubmit = event => {
@@ -69,13 +69,13 @@ function Login() {
             <Form onSubmit={handlerSubmit} className="p-2">
               <FormGroup className="text-brand">
                 <Label>E-mail</Label>
-                <Input type="email" className={`form-control ${statusAuth}`} placeholder="john@neoeducate.com" name="email" onChange={credentialHandler} required />
-                <FormFeedback>Incorrect username or password.</FormFeedback>
+                <Input type="email" className={`form-control ${statusAuth}`} placeholder="john@neoeducate.com" name="email" onChange={credentialHandler}/>
+                <FormFeedback>Try admin@admin.com</FormFeedback>
               </FormGroup>
               <FormGroup className="text-brand">
                 <Label for="floatingInputValue2">Password</Label>
-                <Input type="password" className={`form-control ${statusAuth}`} placeholder="**********" name="password" onChange={credentialHandler} required />
-                <FormFeedback>Incorrect username or password.</FormFeedback>
+                <Input type="password" className={`form-control ${statusAuth}`} placeholder="**********" name="password" onChange={credentialHandler}/>
+                <FormFeedback>Try admin</FormFeedback>
               </FormGroup>
               <Button type="submit" className="mt-1 btn text-light border-0 btn-login rounded-pill w-100" onClick={authHandler}>Sign In</Button>
             </Form>
