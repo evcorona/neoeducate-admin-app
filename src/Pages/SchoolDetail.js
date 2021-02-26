@@ -1,88 +1,80 @@
 /* Import Tools */
 import React, { useState, useEffect } from 'react';
-import {
-  Link
-} from "react-router-dom";
 
 /* Import Styles */
-import {
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-  ButtonGroup,
-} from 'reactstrap'
-import DataAPI from '../Components/Other/DataAPI'
+import { Row, Col, Button, Alert } from 'reactstrap'
 
-export default function SchoolDetail() {
-  /* Endpoint */
-  const endpoint = DataAPI().endpoint + DataAPI().schoolRoute
+/* Components */
+import Endpoint from '../Components/Endpoint/index'
+import FormSchool from '../Components/FormSchool/index'
+
+export default function SchoolDetail(props) {
+  /* Props */
+  const { toggle, setModalMessage } = props
 
   /* Hooks */
   const [schoolSelected, setSchoolSelected] = useState({})
-  const [editStatus, setEditStatus] = useState(false)
-  const [deleteStatus, setDeleteStatus] = useState(false)
+  const { nameSchool, enrrolmentDate, typePlan, qtyUsers, card, _id } = schoolSelected
+
+  const [alert, setAlert] = useState("")
+  const [cardAlert, setCardAlert] = useState("")
+
+  /* Effects */
+  useEffect(() => {
+    const schoolID = new URLSearchParams(window.location.search).get('schoolID');
+    !schoolID && window.location.replace("/schools")
+
+    fetch(Endpoint().schools + schoolID, { headers: Endpoint().headers })
+      .then(res => res.json())
+      .catch(error => setAlert(`[${error}] Please try again. If the problem persists, contact support.`))
+      .then(response => response.success ? setSchoolSelected(response.data) : setAlert(`Please try again. If the problem persists, contact support.`))
+  }, [])
 
   /* Actions */
+  const handlerSubmit = event => { event.preventDefault(); };
+
   const changeHandler = event => {
+    setAlert("")
+    setCardAlert("")
     setSchoolSelected({ ...schoolSelected, [event.target.name]: event.target.value })
   }
 
-  const handlerSubmit = event => {
-    event.preventDefault();
-  };
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const schoolID = urlParams.get('schoolID');
-
-    fetch(endpoint + schoolID, {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("neojwt")
-      },
-    }).then(res => res.json())
-      .catch(error => console.error('Error', error))
-      .then(response => {
-        setSchoolSelected(response.data)
-      })
-  }, [])
-
-  /* Destructuring */
-  let { nameSchool, enrrolmentDate, typePlan, qtyUsers, card, _id } = schoolSelected
-
+  const validationHandler = () => {
+    !nameSchool || !enrrolmentDate || !typePlan || !qtyUsers || !card
+      ? setAlert("Oops! Please complete all the fields.")
+      : card.length !== 16
+        ? setCardAlert("is-invalid")
+        : saveHandler()
+  }
 
   const saveHandler = () => {
-
-    fetch(endpoint + _id, {
+    fetch(Endpoint().schools + _id, {
       method: 'PATCH',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("neojwt")
-      },
+      headers: Endpoint().headers,
       body: JSON.stringify(schoolSelected),
     }).then(res => res.json())
       .catch(error => console.error('Error', error))
       .then(response => {
-        response.success && setEditStatus(true)
+        if (response.success) {
+          setModalMessage({ text: "School edited", btnAdd: "d-none" })
+          toggle()
+        }
+        else (setAlert("Please try again. If the problem persists, contact support."))
       })
   }
 
   const deleteHandler = () => {
-    fetch(endpoint + _id, {
+    fetch(Endpoint().schools + _id, {
       method: 'DELETE',
-      headers: {
-        "Authorization": localStorage.getItem("neojwt")
-      },
+      headers: Endpoint().headers,
     }).then(res => res.json())
       .catch(error => console.error('Error', error))
       .then(response => {
-        response.success && setDeleteStatus(true)
+        if (response.success) {
+          setModalMessage({ text: "School deleted", btnAdd: "d-none" })
+          toggle()
+        }
+        else (setAlert("Please try again. If the problem persists, contact support."))
       })
   }
 
@@ -90,40 +82,19 @@ export default function SchoolDetail() {
     <Row className="bottom-animation">
       <Col xs="12" md={{ size: 7, offset: 3 }}>
         <h1 className="text-center mb-2">Edit Mode</h1>
-        <Form className="p-3 editmode-form rounded shadow" onSubmit={handlerSubmit}>
-          <FormGroup>
-            <Label>Name</Label>
-            <Input type="text" name="nameSchool" placeholder="Write here the amazing academy..." onChange={changeHandler} defaultValue={nameSchool} />
-          </FormGroup>
-          <FormGroup>
-            <Label>Enrollment Date as Client</Label>
-            <Input type="date" name="enrrolmentDate" onChange={changeHandler} placeholder="YYYY-MM-DD" defaultValue={enrrolmentDate} />
-          </FormGroup>
-          <FormGroup>
-            <Label>Associated credit card for payments</Label>
-            <Input type="text" name="card" placeholder="XXX-XXX-XXX-XXX" onChange={changeHandler} minLength="13" maxLength="19" defaultValue={card} />
-          </FormGroup>
-          <FormGroup>
-            <Label>Type of plan service</Label>
-            <Input type="select" name="typePlan" onChange={changeHandler} defaultValue={typePlan}>
-              <option name="plan1">Plan 1</option>
-              <option name="plan2">Plan 2</option>
-              <option name="plan3">Plan 3</option>
-            </Input>
-          </FormGroup>
-          <FormGroup>
-            <Label>Quantity of users</Label>
-            <Input type="number" name="qtyUsers" min="0" step="10" placeholder="Set the number of users..." onChange={changeHandler} defaultValue={qtyUsers} />
-          </FormGroup>
+        <Alert color="danger" className={alert ? "text-center" : "d-none"}>{alert}</Alert>
+        <div className="p-3 editmode-form rounded shadow">
+          <FormSchool
+            handlerSubmit={handlerSubmit}
+            changeHandler={changeHandler}
+            schoolData={schoolSelected}
+            cardAlert={cardAlert}
+          />
           <div className="d-flex flex-row justify-content-center px-1">
-            <Link to="/schools" type="submit" className="btn btn-delete rounded-pill text-white border-0 m-1 px-4 font-weight-bold" onClick={deleteHandler}>
-              Delete
-            </Link>
-            <Link to="/schools" type="submit" className="btn btn-brand-2 m-1 rounded-pill text-white font-weight-bold w-100" onClick={saveHandler} >
-              Update
-            </Link>
+            <Button className="btn-delete rounded-pill text-white border-0 m-1 px-4 font-weight-bold" onClick={deleteHandler}>Delete</Button>
+            <Button className="btn-brand-2 m-1 rounded-pill text-white font-weight-bold w-100" onClick={validationHandler} >Update</Button>
           </div>
-        </Form>
+        </div>
       </Col>
     </Row>
   )
