@@ -1,56 +1,40 @@
 /* Import Tools */
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 /* Import Styles */
-import {
-  Row,
-  Col,
-  Button,
-  Table,
-  ButtonGroup,
-  Input
-} from 'reactstrap'
+import { Row, Col, Table } from 'reactstrap'
 
-/* Import Components */
+/* Components */
+import Endpoint from '../Components/Endpoint/index'
 import SchoolCard from '../Components/SchoolCard/index'
 import SchoolRow from '../Components/SchoolRow/index'
-import DataAPI from '../Components/Other/DataAPI'
-import TierValue from '../Components/Other/TierValue'
+import TierValue from '../Components/AuxiliaryFunctions/TierValue'
 
-function Schools() {
-  /* Common Vars */
-  const endpoint = DataAPI().endpoint + DataAPI().schoolRoute
-
+export default function Schools() {
   /* Hooks */
   const [schoolsCollection, setSchoolsCollection] = useState({})
 
-
   /* Actions */
   const getSchools = () => {
-
-    fetch(endpoint,
-      {
-        headers: { "Authorization": localStorage.getItem("neojwt") }
-      })
+    fetch(Endpoint().schools, { headers: Endpoint().headers })
       .then(response => response.json())
       .then(json => {
         setSchoolsCollection(json.data.reverse())
       })
-
   }
 
   useEffect(() => {
     getSchools()
   }, [])
 
-
+  /* Render */
   return (
     <div className="bottom-animation">
       <Row className="mb-2">
         <Col xs="12" className="schools">
           <div className="school-header">
             <h1 className="text-center mb-2">Enrolled Schools</h1>
-          {/*   <Input className="d-block d-lg-none mb-2" type="search" name="search" placeholder="Search school..." />
+            {/*   <Input className="d-block d-lg-none mb-2" type="search" name="search" placeholder="Search school..." />
             <ButtonGroup className="d-flex align-items-center justify-content-between rounded d-lg-none">
               <Button className="btn-filter">Name</Button>
               <Button className="btn-filter">Date</Button>
@@ -88,8 +72,8 @@ function Schools() {
                 <th className="btn-filter text-nowrap" scope="col">Typer of Plan</th>
                 <th className="btn-filter widthusers" scope="col">Users Qty</th>
                 <th className="btn-filter" scope="col">Tier</th>
-                <th className="btn-filter" scope="col"></th>              
-                <th className="btn-filter" scope="col"></th>     
+                <th className="btn-filter" scope="col"></th>
+                <th className="btn-filter" scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -116,5 +100,3 @@ function Schools() {
     </div>
   );
 }
-
-export default Schools;

@@ -2,13 +2,11 @@
 import React, { useState, useEffect } from 'react';
 
 /* Import Components */
+import Endpoint from '../Endpoint/index'
 import InputChange from '../Other/InputChange'
-import DataAPI from '../Other/DataAPI'
-import TierValue from '../Other/TierValue'
+import TierValue from '../AuxiliaryFunctions/TierValue'
 
 export default function SchoolRow(props) {
-  /* Endpoint */
-  const endpoint = DataAPI().endpoint + DataAPI().schoolRoute
   /* Auxiliar Vars */
   const reset = { status: false, save: "d-none" }
   const editMode = { status: true, edit: "d-none" }
@@ -20,7 +18,7 @@ export default function SchoolRow(props) {
 
   /* Destructuring */
   let { noItem, nameSchool, enrrolmentDate, typePlan, qtyUsers, id, card } = schoolSelected
-  let tier=TierValue(qtyUsers)
+  let tier = TierValue(qtyUsers)
   const tierStyle = tier.toLowerCase().replace(" ", "")
 
   /* Actions */
@@ -29,12 +27,9 @@ export default function SchoolRow(props) {
   }
 
   const saveHandler = () => {
-    fetch((endpoint + id), {
+    fetch((Endpoint().schools + id), {
       method: 'PATCH',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("neojwt")
-      },
+      headers: Endpoint().headers,
       body: JSON.stringify(schoolSelected),
     }).then(res => res.json())
       .catch(error => console.error('Error', error))
@@ -48,11 +43,9 @@ export default function SchoolRow(props) {
   }
 
   const deleteHandler = () => {
-    fetch((endpoint + id), {
+    fetch((Endpoint().schools + id), {
       method: 'DELETE',
-      headers: {
-        "Authorization": localStorage.getItem("neojwt")
-      },
+      headers: Endpoint().headers,
     }).then(res => res.json())
       .catch(error => console.error('Error', error))
       .then(response => {

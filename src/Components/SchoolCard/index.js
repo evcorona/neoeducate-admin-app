@@ -1,21 +1,13 @@
 /* Import Tools */
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 /* Import Styles */
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  Button,
-} from 'reactstrap'
+import { Card, CardBody, CardTitle, CardText, Button, } from 'reactstrap'
 
 /* Components */
 import image from '../../Images/student.svg'
 
-function SchoolCard(props) {
+export default function SchoolCard(props) {
   const { nameSchool, enrrolmentDate, typePlan, qtyUsers, tier, id } = props
   const tierStyle = tier.toLowerCase().replace(" ", "")
 
@@ -43,7 +35,7 @@ function SchoolCard(props) {
         </CardText>
       </CardBody>
       <Link to={`/school-detail?schoolID=${id}`} >
-        <Button color="secondary" className="text-center text-white w-100" >
+        <Button color="secondary" className="text-center text-white w-100 h-100" >
           <img src={image} alt="students" className="py-3 d-none d-md-block" />
           <i className="fa fa-edit mr-2"></i>
           <span>Edit Mode</span>
@@ -52,5 +44,3 @@ function SchoolCard(props) {
     </Card>
   );
 }
-
-export default SchoolCard;
