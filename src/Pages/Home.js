@@ -7,7 +7,6 @@ import { Row, Col, Card, CardText, CardBody, CardTitle } from 'reactstrap'
 /* Import Components */
 import Endpoint from '../Components/Endpoint/index'
 import Img1 from '../Images/boy.svg'
-import Img2 from '../Images/women2.svg'
 
 export default function Home() {
   /* Hooks */
@@ -35,7 +34,6 @@ export default function Home() {
       <Col xs="12" className="text-center" tag="h1">Insights</Col>
       <Col xs="12" md="6" className="order-2 order-md-1 d-flex flex-column-reverse justify-content-center align-items-center">
         <img src={Img1} className="m-2 mt-3 img-dashdesktop w-100 d-none d-md-block" alt="Neo Educate" />
-        <img src={Img2} className="m-2 mt-3 img-dash d-md-none" alt="Neo Educate" />
       </Col>
       <Col xs="12" md="6" className="order-1 order-md-2 container p-3">
         <Card className="mx-3 mb-3 py-2 text-center shadow">
