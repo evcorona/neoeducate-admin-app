@@ -39,6 +39,10 @@
   color: #4FA9DD;
 }
 
+.neo-nav .userhere {
+  border-bottom: 2px solid #4FA9DD;
+}
+
 .dashboard {
   overflow-y: hidden;
 }

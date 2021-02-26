@@ -19,15 +19,20 @@ import {
 /* Import Components */
 import logo from '../../Images/logo.svg'
 
-export default function NavBar(props) {
+export default function NavBar() {
+  /* Hooks */
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+console.log(window.location.pathname)
+
+  /* Actions */
   const signOut = () => {
     localStorage.removeItem("neojwt")
     window.location.reload()
   }
 
+  /* Render */
   return (
     <Navbar color="white" light expand="md" className="neo-nav shadow fixed-top">
       <Container>

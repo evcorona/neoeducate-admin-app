@@ -11,6 +11,7 @@ import SchoolRow from '../Components/SchoolRow/index'
 import TierValue from '../Components/AuxiliaryFunctions/TierValue'
 
 export default function Schools() {
+
   /* Hooks */
   const [schoolsCollection, setSchoolsCollection] = useState({})
   const [alert, setAlert] = useState("")

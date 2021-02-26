@@ -11,7 +11,7 @@ import AlertMessages from '../Components/AlertMessages/index'
 
 export default function NewSchool(props) {
   /* Props */
-  const { toggle, setModalMessage } = props
+  const { toggle, setModalMessage} = props
 
   /* Auxiliar Vars */
   const { msgCardError, msgSysError, msgEmptyError } = AlertMessages()
