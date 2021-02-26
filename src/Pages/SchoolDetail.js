@@ -85,7 +85,7 @@ export default function SchoolDetail(props) {
   /* Render */
   return (
     <Row className="bottom-animation">
-      <Col xs="12" lg={{ size: 7, offset: 3 }}>
+      <Col xs="12" lg={{ size: 6, offset: 3 }}>
         <h1 className="text-center mb-2">Edit Mode</h1>
         <Alert color="danger" className={alert ? "text-center" : "d-none"}>{alert}</Alert>
         <div className="p-3 editmode-form rounded shadow">
