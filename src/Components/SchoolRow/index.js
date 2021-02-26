@@ -1,9 +1,9 @@
 /* Import Tools */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 /* Import Components */
 import Endpoint from '../Endpoint/index'
-import InputChange from '../Other/InputChange'
+import InputChange from './InputChange'
 import TierValue from '../AuxiliaryFunctions/TierValue'
 
 export default function SchoolRow(props) {
@@ -100,7 +100,7 @@ export default function SchoolRow(props) {
       <td><small className={`rounded-pill p-2 text-white text-nowrap ${tierStyle}`}>{tier}</small></td>
       <td>
         <i type="button" className={`fa fa-edit text-info rounded px-1 ${editStatus.edit}`} onClick={editHandler} />
-        <i type="button" className={`text-info rounded px-1 ${editStatus.save}`} onClick={saveHandler}>Save</i>
+        <i type="button" className={`btn-brand-3 text-white rounded p-1 ${editStatus.save}`} onClick={saveHandler}>Save</i>
       </td>
       <td>
         <i type="button" className="fa fa-trash text-danger rounded px-1" onClick={deleteHandler} />

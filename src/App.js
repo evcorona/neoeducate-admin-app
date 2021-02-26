@@ -42,6 +42,7 @@ export default function App() {
             <Switch>
               <Container fluid className="mt-3">
                 <Row>
+                <div className="bg-main"/>
                   <Container>
                     <Route exact path="/">
                       <Home />

@@ -12,7 +12,7 @@ export default function SchoolCard(props) {
   const tierStyle = tier.toLowerCase().replace(" ", "")
 
   return (
-    <Card className="mb-2 d-flex flex-column flex-md-row">
+    <Card className="mb-2 d-flex flex-column flex-md-row shadow border-0">
       <CardBody className="border-0">
         <CardTitle>
           <span className="pr-3 h4">{nameSchool}</span>

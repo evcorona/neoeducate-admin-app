@@ -25,3 +25,5 @@ yarn-error.log*
 # Aditional
 *.map
 /backups
+
+*.map

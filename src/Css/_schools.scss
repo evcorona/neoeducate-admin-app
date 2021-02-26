@@ -1,56 +1,42 @@
-.schools,
-.table-container {
-  .btn-filter {
-    background-color: #4FA9DD;
-    border-color: #4FA9DD;
-    color: white;
-    &:hover {
-      background-color: #187cb6;
-    }
-  }
-
-}
-
-.card-container,
-.table-container {
+.schools {
   .tier1 {
-    background-color: #FF9E32;
+    background-color: $brand-color-5;
   }
 
   .tier2 {
-    background-color: #002E84;
+    background-color: $brand-color-3;
   }
 
   .tier3 {
-    background-color: #FF39B0;
+    background-color: $brand-color-4;
   }
 
-  img {
-    width: 100px;
-    object-fit: contain;
-  }
-
-}
-
-.table-container {
-  .widthusers {
-    width: 120px;
-  }
-
-  .fa {
-    font-size: x-large;
-
-    &:hover {
-      background-color: lightgrey;
+  .card-container {
+    img {
+      width: 100px;
+      object-fit: contain;
     }
   }
 
-  input,
-  select {
-    border: none;
-    background-color: lightgrey;
-    font-size: smaller;
-    width: 80%;
-  }
+  .table-container {
+    .widthusers {
+      width: 120px;
+    }
 
+    .fa {
+      font-size: x-large;
+
+      &:hover {
+        background-color: lightgrey;
+      }
+    }
+
+    input,
+    select {
+      border: none;
+      background-color: lightgrey;
+      font-size: smaller;
+      width: 80%;
+    }
+  }
 }

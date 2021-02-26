@@ -58,7 +58,7 @@ export default function Login() {
   return (
     <Container fluid className="login-container">
       <Row>
-        <div class="bg-image"></div>
+        <div class="bg-image"/>
         <Col sm="12" md={{ size: 8, offset: 2 }} className="d-flex flex-column justify-content-center align-items-center login-col">
           <div className="login bottom-animation rounded d-flex flex-column justify-content-center align-items-center shadow px-4 py-3">
             <img src={Logo} className="m-2 mt-3" alt="Neo Educate" />

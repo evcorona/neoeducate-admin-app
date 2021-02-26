@@ -1,7 +1,9 @@
 @import '_variables.scss';
 @import '_login.scss';
 @import '_navbar.scss';
+@import '_dashboard.scss';
 @import '_schools.scss';
+@import '_schooltable.scss';
 @import '_school-detail.scss';
 @import '_modal-continue.scss';
 @import '_newschool.scss';
@@ -62,4 +64,26 @@ a {
   &:hover {
     background-color: $color-button-hover2;
   }
+}
+
+.btn-brand-3{
+  background-color: $brand-color-3;
+  color: white;
+  border: none;
+
+  &:hover {
+    background-color: $color-button-hover2;
+  }
+}
+
+.bg-main{
+  background-image: url("../Images/waves_navy.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 100vw;
+  height: 300px;
+  position: fixed;
+  bottom: 0;
+  z-index: -1;
 }

@@ -29,22 +29,10 @@ export default function Schools() {
 
   /* Render */
   return (
-    <div className="bottom-animation">
-      <Row className="mb-2">
-        <Col xs="12" className="schools">
-          <div className="school-header">
-            <h1 className="text-center mb-2">Enrolled Schools</h1>
-            {/*   <Input className="d-block d-lg-none mb-2" type="search" name="search" placeholder="Search school..." />
-            <ButtonGroup className="d-flex align-items-center justify-content-between rounded d-lg-none">
-              <Button className="btn-filter">Name</Button>
-              <Button className="btn-filter">Date</Button>
-              <Button className="btn-filter">Tier</Button>
-            </ButtonGroup> */}
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="12" className="d-lg-none card-container">
+    <Row className="mb-2 schools bottom-animation">
+      <Col xs="12">
+        <h1 className="text-center mb-2">Enrolled Schools</h1>
+        <div className="d-lg-none card-container">
           {
             Object.values(schoolsCollection).map(school => {
               let { nameSchool, enrrolmentDate, typePlan, qtyUsers, _id } = school
@@ -60,43 +48,41 @@ export default function Schools() {
               )
             })
           }
-        </Col>
-        <Col lg="12" className="d-none d-lg-block table-container">
-          <Table hover responsive striped className="text-center" size="">
-            <thead>
-              <tr>
-                <th className="btn-filter" scope="col">#</th>
-                <th className="btn-filter" scope="col">School</th>
-                <th className="btn-filter" scope="col">Enrrollment Date</th>
-                <th className="btn-filter" scope="col">Associated Credit Card</th>
-                <th className="btn-filter text-nowrap" scope="col">Typer of Plan</th>
-                <th className="btn-filter widthusers" scope="col">Users Qty</th>
-                <th className="btn-filter" scope="col">Tier</th>
-                <th className="btn-filter" scope="col"></th>
-                <th className="btn-filter" scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                Object.keys(schoolsCollection).map(item => {
-                  let { nameSchool, enrrolmentDate, typePlan, card, qtyUsers, _id } = schoolsCollection[item]
-                  return (
-                    <SchoolRow
-                      noItem={parseInt(item) + 1}
-                      nameSchool={nameSchool}
-                      enrrolmentDate={enrrolmentDate}
-                      typePlan={typePlan}
-                      qtyUsers={qtyUsers}
-                      id={_id}
-                      card={card}
-                    />
-                  )
-                })
-              }
-            </tbody>
-          </Table>
-        </Col>
-      </Row>
-    </div>
+        </div>
+        <Table hover responsive className="shadow text-center d-none d-lg-block table-container">
+          <thead>
+            <tr>
+              <th className="btn-brand-3" scope="col">#</th>
+              <th className="btn-brand-3" scope="col">School</th>
+              <th className="btn-brand-3" scope="col">Enrrollment Date</th>
+              <th className="btn-brand-3" scope="col">Associated Credit Card</th>
+              <th className="btn-brand-3 text-nowrap" scope="col">Typer of Plan</th>
+              <th className="btn-brand-3 widthusers" scope="col">Users Qty</th>
+              <th className="btn-brand-3"scope="col">Tier</th>
+              <th className="btn-brand-3" scope="col"></th>
+              <th className="btn-brand-3" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              Object.keys(schoolsCollection).map(item => {
+                let { nameSchool, enrrolmentDate, typePlan, card, qtyUsers, _id } = schoolsCollection[item]
+                return (
+                  <SchoolRow
+                    noItem={parseInt(item) + 1}
+                    nameSchool={nameSchool}
+                    enrrolmentDate={enrrolmentDate}
+                    typePlan={typePlan}
+                    qtyUsers={qtyUsers}
+                    id={_id}
+                    card={card}
+                  />
+                )
+              })
+            }
+          </tbody>
+        </Table>
+      </Col>
+    </Row>
   );
 }

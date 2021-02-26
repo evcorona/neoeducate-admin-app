@@ -22,7 +22,7 @@ export default function InputChange(props) {
               <option name="plan2">Plan 2</option>
               <option name="plan3">Plan 3</option>
             </Input>
-          : <p className="bg-transparent"> {defaultValue}</p>
+          : <p className="p-0 m-0 text-center"> {defaultValue}</p>
       }
     </>
   )

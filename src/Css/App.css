@@ -39,58 +39,50 @@
   color: #4FA9DD;
 }
 
-.schools .btn-filter,
-.table-container .btn-filter {
-  background-color: #4FA9DD;
-  border-color: #4FA9DD;
-  color: white;
+.dashboard .img-dash {
+  width: 60%;
 }
 
-.schools .btn-filter:hover,
-.table-container .btn-filter:hover {
-  background-color: #187cb6;
-}
-
-.card-container .tier1,
-.table-container .tier1 {
+.schools .tier1 {
   background-color: #FF9E32;
 }
 
-.card-container .tier2,
-.table-container .tier2 {
+.schools .tier2 {
   background-color: #002E84;
 }
 
-.card-container .tier3,
-.table-container .tier3 {
-  background-color: #FF39B0;
+.schools .tier3 {
+  background-color: #F30098;
 }
 
-.card-container img,
-.table-container img {
+.schools .card-container img {
   width: 100px;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.table-container .widthusers {
+.schools .table-container .widthusers {
   width: 120px;
 }
 
-.table-container .fa {
+.schools .table-container .fa {
   font-size: x-large;
 }
 
-.table-container .fa:hover {
+.schools .table-container .fa:hover {
   background-color: lightgrey;
 }
 
-.table-container input,
-.table-container select {
+.schools .table-container input,
+.schools .table-container select {
   border: none;
   background-color: lightgrey;
   font-size: smaller;
   width: 80%;
+}
+
+.table-container tr {
+  text-align: center;
 }
 
 .editmode-form {
@@ -198,5 +190,27 @@ a:hover {
 
 .btn-brand-2:hover {
   background-color: #1d9ce6;
+}
+
+.btn-brand-3 {
+  background-color: #002E84;
+  color: white;
+  border: none;
+}
+
+.btn-brand-3:hover {
+  background-color: #1d9ce6;
+}
+
+.bg-main {
+  background-image: url("../Images/waves_navy.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 100vw;
+  height: 300px;
+  position: fixed;
+  bottom: 0;
+  z-index: -1;
 }
 /*# sourceMappingURL=App.css.map */
