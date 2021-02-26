@@ -40,7 +40,7 @@ export default function App() {
             <ModalContinue modal={modal} toggle={toggle} message={modalMessage}/>
             <NavBar />
             <Switch>
-              <Container fluid className="mt-3">
+              <Container fluid className="mt-3 all-content">
                 <Row>
                 <div className="bg-main"/>
                   <Container>
