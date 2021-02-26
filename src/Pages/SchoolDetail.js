@@ -85,7 +85,7 @@ export default function SchoolDetail(props) {
   /* Render */
   return (
     <Row className="bottom-animation">
-      <Col xs="12" md={{ size: 7, offset: 3 }}>
+      <Col xs="12" lg={{ size: 7, offset: 3 }}>
         <h1 className="text-center mb-2">Edit Mode</h1>
         <Alert color="danger" className={alert ? "text-center" : "d-none"}>{alert}</Alert>
         <div className="p-3 editmode-form rounded shadow">
@@ -95,7 +95,7 @@ export default function SchoolDetail(props) {
             schoolData={schoolSelected}
             cardAlert={cardAlert}
           />
-          <div className="d-flex flex-row justify-content-center px-1">
+          <div className="d-flex flex-row justify-content-center px-1 mb-2">
             <Button className="btn-delete rounded-pill text-white border-0 m-1 px-4 font-weight-bold" onClick={deleteHandler}>Delete</Button>
             <Button className="btn-brand-2 m-1 rounded-pill text-white font-weight-bold w-100" onClick={validationHandler} >Update</Button>
           </div>

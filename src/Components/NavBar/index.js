@@ -29,7 +29,7 @@ export default function NavBar(props) {
   }
 
   return (
-    <Navbar color="white" light expand="md" className="neo-nav">
+    <Navbar color="white" light expand="md" className="neo-nav shadow fixed-top">
       <Container>
         <Link className="navbar-brand d-block d-md-none" to="/">
           <img src={logo} alt="NeoEducate" />

@@ -8,9 +8,9 @@ All requests are sent to the [API Developed - BackEnd](https://github.com/veroxc
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-After clone this project install dependencies using:
+  After clone this project install dependencies using:
 
-#### `npm install`
+  #### `npm install`
 
 ### Available Scripts
 

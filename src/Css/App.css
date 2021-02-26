@@ -39,8 +39,16 @@
   color: #4FA9DD;
 }
 
+.dashboard {
+  overflow-y: hidden;
+}
+
 .dashboard .img-dash {
   width: 60%;
+}
+
+.dashboard .img-dashdesktop {
+  width: 80%;
 }
 
 .schools .tier1 {
@@ -130,6 +138,10 @@ a {
 a:hover {
   color: unset;
   text-decoration: unset;
+}
+
+.App {
+  padding-top: 70px;
 }
 
 .bottom-animation {

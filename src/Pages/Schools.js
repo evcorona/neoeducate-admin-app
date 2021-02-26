@@ -30,7 +30,7 @@ export default function Schools() {
 
   /* Render */
   return (
-    <Row className="mb-2 schools bottom-animation">
+    <Row className="schools bottom-animation">
       <Col xs="12">
         <h1 className="text-center mb-2">Enrolled Schools</h1>
         <Alert color="danger" className={alert ? "text-center" : "d-none"}>{alert}</Alert>

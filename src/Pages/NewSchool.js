@@ -60,7 +60,7 @@ export default function NewSchool(props) {
   /* Render */
   return (
     <Row className="bottom-animation">
-      <Col xs="12" md={{ size: 7, offset: 3 }}>
+      <Col xs="12" lg={{ size: 7, offset: 3 }}>
         <h1 className="text-center mb-2">Add a new school!</h1>
         <Alert color="danger" className={alert ? "text-center" : "d-none"}>{alert}</Alert>
         <div className="p-3 news-form rounded shadow">
@@ -71,7 +71,7 @@ export default function NewSchool(props) {
             cardAlert={cardAlert}
             msgCardError={msgCardError}
           />
-          <Button className="btn btn-brand-2 m-1 rounded-pill text-white font-weight-bold w-100" onClick={validationHandler}>Save</Button>
+          <Button className="btn btn-brand-2 m-1 rounded-pill text-white font-weight-bold w-100 mb-2" onClick={validationHandler}>Save</Button>
         </div>
       </Col>
     </Row>

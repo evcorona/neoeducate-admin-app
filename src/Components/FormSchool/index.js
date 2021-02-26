@@ -5,7 +5,7 @@ export default function FormSchool(props) {
   const { handlerSubmit, changeHandler, schoolData, cardAlert, msgCardError } = props
 
   return (
-    <Form onSubmit={handlerSubmit}>
+    <Form onSubmit={handlerSubmit} className="pb-2">
       <FormGroup>
         <Label>Name</Label>
         <Input
@@ -15,26 +15,26 @@ export default function FormSchool(props) {
           onChange={changeHandler}
           value={!schoolData.nameSchool ? "" : schoolData.nameSchool} />
       </FormGroup>
-      <FormGroup>
-        <Label>Enrollment Date as Client</Label>
-        <Input
-          type="date"
-          name="enrrolmentDate"
-          placeholder="YYYY-MM-DD"
-          onChange={changeHandler}
-          value={!schoolData.enrrolmentDate ? "" : schoolData.enrrolmentDate} />
-      </FormGroup>
-      <FormGroup>
-        <Label>Associated credit card for payments</Label>
-        <Input
-          type="number"
-          name="card"
-          placeholder="XXXX-XXXX-XXXX-XXXX"
-          onChange={changeHandler}
-          value={!schoolData.card ? "" : schoolData.card}
-          className={`form-control ${cardAlert}`} />
-        <FormFeedback>{msgCardError}</FormFeedback>
-      </FormGroup>
+        <FormGroup>
+          <Label>Enrollment Date as Client</Label>
+          <Input
+            type="date"
+            name="enrrolmentDate"
+            placeholder="YYYY-MM-DD"
+            onChange={changeHandler}
+            value={!schoolData.enrrolmentDate ? "" : schoolData.enrrolmentDate} />
+        </FormGroup>
+        <FormGroup>
+          <Label>Associated credit card for payments</Label>
+          <Input
+            type="number"
+            name="card"
+            placeholder="XXXX-XXXX-XXXX-XXXX"
+            onChange={changeHandler}
+            value={!schoolData.card ? "" : schoolData.card}
+            className={`form-control ${cardAlert}`} />
+          <FormFeedback>{msgCardError}</FormFeedback>
+        </FormGroup>
       <FormGroup>
         <Label>Type of plan service</Label>
         <Input
