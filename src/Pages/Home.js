@@ -2,17 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 /* Import Styles */
-import {
-  Row,
-  Col,
-  CardDeck,
-  Card,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardImg
-} from 'reactstrap'
+import { Row, Col, Card, CardText, CardBody, CardTitle } from 'reactstrap'
 
 /* Import Components */
 import Endpoint from '../Components/Endpoint/index'
@@ -48,20 +38,20 @@ export default function Home() {
       </Col>
       <Col xs="12" md="6" className="order-1 order-md-2 container p-3">
         <h1 className="text-center mb-2">Insights</h1>
-        <Card className="m-3 py-3 text-center">
+        <Card className="m-3 py-3 text-center shadow">
           <CardBody>
             <CardTitle tag="h4">Enrrolled Schools</CardTitle>
             <CardText tag="h2">{schoolsCollection.length}</CardText>
           </CardBody>
         </Card>
-        <Card className="m-3 py-3 text-center">
+        <Card className="m-3 py-3 text-center shadow">
           <CardBody>
             <CardTitle tag="h4">Total Users</CardTitle>
             <CardText tag="h2">
               {schoolsCollection.reduce((accum, school) => school.qtyUsers + accum, 0)}</CardText>
           </CardBody>
         </Card>
-        <Card className="m-3 py-3 text-center">
+        <Card className="m-3 py-3 text-center shadow">
           <CardBody>
             <CardTitle tag="h4">Top School</CardTitle>
             <CardText tag="h2">{topSchool.nameSchool}</CardText>

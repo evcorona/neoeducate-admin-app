@@ -48,7 +48,7 @@
 }
 
 .schools .tier2 {
-  background-color: #002E84;
+  background-color: #002B87;
 }
 
 .schools .tier3 {
@@ -105,8 +105,8 @@
 }
 
 .modal-footer .btn-add:hover {
-  background-color: #da0f8c;
-  border-color: #da0f8c;
+  background-color: #cc0c83;
+  border-color: #cc0c83;
 }
 
 .news-form {
@@ -179,7 +179,7 @@ a:hover {
 }
 
 .btn-brand:hover {
-  background-color: #da0f8c;
+  background-color: #cc0c83;
 }
 
 .btn-brand-2 {
@@ -189,17 +189,17 @@ a:hover {
 }
 
 .btn-brand-2:hover {
-  background-color: #1d9ce6;
+  background-color: #1a8cce;
 }
 
 .btn-brand-3 {
-  background-color: #002E84;
+  background-color: #002B87;
   color: white;
   border: none;
 }
 
 .btn-brand-3:hover {
-  background-color: #1d9ce6;
+  background-color: #1a8cce;
 }
 
 .bg-main {

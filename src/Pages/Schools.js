@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 /* Import Styles */
-import { Row, Col, Table } from 'reactstrap'
+import { Row, Col, Table, Alert } from 'reactstrap'
 
 /* Components */
 import Endpoint from '../Components/Endpoint/index'
@@ -13,6 +13,7 @@ import TierValue from '../Components/AuxiliaryFunctions/TierValue'
 export default function Schools() {
   /* Hooks */
   const [schoolsCollection, setSchoolsCollection] = useState({})
+  const [alert, setAlert] = useState("")
 
   /* Actions */
   const getSchools = () => {
@@ -32,6 +33,7 @@ export default function Schools() {
     <Row className="mb-2 schools bottom-animation">
       <Col xs="12">
         <h1 className="text-center mb-2">Enrolled Schools</h1>
+        <Alert color="danger" className={alert ? "text-center" : "d-none"}>{alert}</Alert>
         <div className="d-lg-none card-container">
           {
             Object.values(schoolsCollection).map(school => {
@@ -49,7 +51,7 @@ export default function Schools() {
             })
           }
         </div>
-        <Table hover responsive className="shadow text-center d-none d-lg-block table-container">
+        <Table hover responsive className="d-none d-lg-block shadow text-center table-container bg-light">
           <thead>
             <tr>
               <th className="btn-brand-3" scope="col">#</th>
@@ -58,7 +60,7 @@ export default function Schools() {
               <th className="btn-brand-3" scope="col">Associated Credit Card</th>
               <th className="btn-brand-3 text-nowrap" scope="col">Typer of Plan</th>
               <th className="btn-brand-3 widthusers" scope="col">Users Qty</th>
-              <th className="btn-brand-3"scope="col">Tier</th>
+              <th className="btn-brand-3" scope="col">Tier</th>
               <th className="btn-brand-3" scope="col"></th>
               <th className="btn-brand-3" scope="col"></th>
             </tr>
@@ -69,13 +71,17 @@ export default function Schools() {
                 let { nameSchool, enrrolmentDate, typePlan, card, qtyUsers, _id } = schoolsCollection[item]
                 return (
                   <SchoolRow
-                    noItem={parseInt(item) + 1}
-                    nameSchool={nameSchool}
-                    enrrolmentDate={enrrolmentDate}
-                    typePlan={typePlan}
-                    qtyUsers={qtyUsers}
-                    id={_id}
-                    card={card}
+                    collection=
+                    {{
+                      noItem: parseInt(item) + 1,
+                      nameSchool,
+                      enrrolmentDate,
+                      typePlan,
+                      qtyUsers,
+                      id: _id,
+                      card
+                    }}
+                    setAlert={setAlert}
                   />
                 )
               })

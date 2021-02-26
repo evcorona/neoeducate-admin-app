@@ -7,15 +7,19 @@ import { Row, Col, Button, Alert } from 'reactstrap'
 /* Components */
 import Endpoint from '../Components/Endpoint/index'
 import FormSchool from '../Components/FormSchool/index'
+import AlertMessages from '../Components/AlertMessages/index'
 
 export default function NewSchool(props) {
   /* Props */
   const { toggle, setModalMessage } = props
 
+  /* Auxiliar Vars */
+  const { msgCardError, msgSysError, msgEmptyError } = AlertMessages()
+
   /* Hooks */
   const [newSchool, setNewSchool] = useState({})
   const { nameSchool, enrrolmentDate, typePlan, qtyUsers, card } = newSchool
-  
+
   const [alert, setAlert] = useState("")
   const [cardAlert, setCardAlert] = useState("")
 
@@ -30,10 +34,10 @@ export default function NewSchool(props) {
 
   const validationHandler = () => {
     !nameSchool || !enrrolmentDate || !typePlan || !qtyUsers || !card
-    ? setAlert("Oops! Please complete all the fields.")
-    : card.length !== 16
-      ? setCardAlert("is-invalid")
-      : saveHandler()
+      ? setAlert(msgEmptyError)
+      : card.length !== 16
+        ? setCardAlert("is-invalid")
+        : saveHandler()
   }
 
   const saveHandler = () => {
@@ -42,14 +46,14 @@ export default function NewSchool(props) {
       headers: Endpoint().headers,
       body: JSON.stringify(newSchool),
     }).then(res => res.json())
-      .catch(error => setAlert(`[${error}] Please try again. If the problem persists, contact support.`))
+      .catch(error => setAlert(msgSysError))
       .then(response => {
         if (response.success) {
           setNewSchool({})
           setModalMessage({ text: "New school saved!", btnAdd: "" })
           toggle()
         }
-        else { setAlert("Please try again. If the problem persists, contact support.") }
+        else { setAlert(msgSysError) }
       })
   }
 
@@ -65,6 +69,7 @@ export default function NewSchool(props) {
             changeHandler={changeHandler}
             schoolData={newSchool}
             cardAlert={cardAlert}
+            msgCardError={msgCardError}
           />
           <Button className="btn btn-brand-2 m-1 rounded-pill text-white font-weight-bold w-100" onClick={validationHandler}>Save</Button>
         </div>

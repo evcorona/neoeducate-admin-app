@@ -7,10 +7,14 @@ import { Row, Col, Button, Alert } from 'reactstrap'
 /* Components */
 import Endpoint from '../Components/Endpoint/index'
 import FormSchool from '../Components/FormSchool/index'
+import AlertMessages from '../Components/AlertMessages/index'
 
 export default function SchoolDetail(props) {
   /* Props */
   const { toggle, setModalMessage } = props
+
+  /* Auxiliar Vars */
+  const { msgCardError, msgSysError, msgEmptyError } = AlertMessages()
 
   /* Hooks */
   const [schoolSelected, setSchoolSelected] = useState({})
@@ -26,8 +30,8 @@ export default function SchoolDetail(props) {
 
     fetch(Endpoint().schools + schoolID, { headers: Endpoint().headers })
       .then(res => res.json())
-      .catch(error => setAlert(`[${error}] Please try again. If the problem persists, contact support.`))
-      .then(response => response.success ? setSchoolSelected(response.data) : setAlert(`Please try again. If the problem persists, contact support.`))
+      .catch(error => setAlert(msgSysError))
+      .then(response => response.success ? setSchoolSelected(response.data) : setAlert(msgSysError))
   }, [])
 
   /* Actions */
@@ -40,10 +44,10 @@ export default function SchoolDetail(props) {
   }
 
   const validationHandler = () => {
-    !nameSchool || !enrrolmentDate || !typePlan || !qtyUsers || !card
-      ? setAlert("Oops! Please complete all the fields.")
+    !nameSchool || !enrrolmentDate || !typePlan || !qtyUsers || !card  
+      ? setAlert(msgEmptyError)
       : card.length !== 16
-        ? setCardAlert("is-invalid")
+        ? setAlert(msgCardError)
         : saveHandler()
   }
 
@@ -53,13 +57,13 @@ export default function SchoolDetail(props) {
       headers: Endpoint().headers,
       body: JSON.stringify(schoolSelected),
     }).then(res => res.json())
-      .catch(error => console.error('Error', error))
+      .catch(error => setAlert(msgSysError))
       .then(response => {
         if (response.success) {
           setModalMessage({ text: "School edited", btnAdd: "d-none" })
           toggle()
         }
-        else (setAlert("Please try again. If the problem persists, contact support."))
+        else{setAlert(msgSysError)}
       })
   }
 
@@ -68,16 +72,17 @@ export default function SchoolDetail(props) {
       method: 'DELETE',
       headers: Endpoint().headers,
     }).then(res => res.json())
-      .catch(error => console.error('Error', error))
+      .catch(error => setAlert(msgSysError))
       .then(response => {
         if (response.success) {
           setModalMessage({ text: "School deleted", btnAdd: "d-none" })
           toggle()
         }
-        else (setAlert("Please try again. If the problem persists, contact support."))
+        else{setAlert(msgSysError)}
       })
   }
 
+  /* Render */
   return (
     <Row className="bottom-animation">
       <Col xs="12" md={{ size: 7, offset: 3 }}>

@@ -2,7 +2,7 @@
 import { Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap'
 
 export default function FormSchool(props) {
-  const { handlerSubmit, changeHandler, schoolData, cardAlert } = props
+  const { handlerSubmit, changeHandler, schoolData, cardAlert, msgCardError } = props
 
   return (
     <Form onSubmit={handlerSubmit}>
@@ -33,7 +33,7 @@ export default function FormSchool(props) {
           onChange={changeHandler}
           value={!schoolData.card ? "" : schoolData.card}
           className={`form-control ${cardAlert}`} />
-        <FormFeedback>Invalid card number. It must be 16 digits.</FormFeedback>
+        <FormFeedback>{msgCardError}</FormFeedback>
       </FormGroup>
       <FormGroup>
         <Label>Type of plan service</Label>
@@ -43,9 +43,9 @@ export default function FormSchool(props) {
           onChange={changeHandler}
           value={!schoolData.typePlan ? "Select an option of the list..." : schoolData.typePlan}>
           <option disabled selected>Select an option of the list...</option>
-          <option value="plan1">Plan 1</option>
-          <option value="plan2">Plan 2</option>
-          <option value="plan3">Plan 3</option>
+          <option value="Plan 1">Plan 1</option>
+          <option value="Plan 2">Plan 2</option>
+          <option value="Plan 3">Plan 3</option>
         </Input>
       </FormGroup>
       <FormGroup>
@@ -53,7 +53,7 @@ export default function FormSchool(props) {
         <Input
           type="number"
           name="qtyUsers"
-          min="1"
+          min="0"
           step="10"
           placeholder="Set the number of users..."
           onChange={changeHandler}

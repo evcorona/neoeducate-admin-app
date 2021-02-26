@@ -3,27 +3,42 @@ import React, { useState } from 'react';
 
 /* Import Components */
 import Endpoint from '../Endpoint/index'
-import InputChange from './InputChange'
+import CellInput from './cell-input'
 import TierValue from '../AuxiliaryFunctions/TierValue'
+import AlertMessages from '../AlertMessages/index'
 
 export default function SchoolRow(props) {
+  /* Props */
+  const { collection, setAlert } = props
+
   /* Auxiliar Vars */
   const reset = { status: false, save: "d-none" }
   const editMode = { status: true, edit: "d-none" }
+  const { msgCardError, msgSysError, msgEmptyError } = AlertMessages()
 
   /* Hooks */
-  const [editStatus, setEditStatus] = useState(reset)
-  const [schoolSelected, setSchoolSelected] = useState(props)
-  const [deleteStatus, setDeleteStatus] = useState(false)
-
-  /* Destructuring */
+  const [schoolSelected, setSchoolSelected] = useState(collection)
   let { noItem, nameSchool, enrrolmentDate, typePlan, qtyUsers, id, card } = schoolSelected
   let tier = TierValue(qtyUsers)
-  const tierStyle = tier.toLowerCase().replace(" ", "")
+  let tierStyle = tier.toLowerCase().replace(" ", "")
+
+  const [editStatus, setEditStatus] = useState(reset)
+  const [deleteStatus, setDeleteStatus] = useState(false)
 
   /* Actions */
-  const editHandler = () => {
-    setEditStatus(editMode)
+  const editHandler = () => { setEditStatus(editMode) }
+
+  const changeHandler = event => {
+    setAlert("")
+    setSchoolSelected({ ...schoolSelected, [event.target.name]: event.target.value })
+  }
+
+  const validationHandler = () => {
+    !nameSchool || !enrrolmentDate || !typePlan || !qtyUsers || !card
+      ? setAlert(msgEmptyError)
+      : card.length !== 16
+        ? setAlert(msgCardError)
+        : saveHandler()
   }
 
   const saveHandler = () => {
@@ -32,14 +47,14 @@ export default function SchoolRow(props) {
       headers: Endpoint().headers,
       body: JSON.stringify(schoolSelected),
     }).then(res => res.json())
-      .catch(error => console.error('Error', error))
+      .catch(error => setAlert(msgSysError))
       .then(response => {
-        response.success && setEditStatus(reset)
+        if (response.success) {
+          setEditStatus(reset)
+          setAlert("")
+        }
+        else (setAlert(msgSysError))
       })
-  }
-
-  const changeHandler = event => {
-    setSchoolSelected({ ...schoolSelected, [event.target.name]: event.target.value })
   }
 
   const deleteHandler = () => {
@@ -47,18 +62,23 @@ export default function SchoolRow(props) {
       method: 'DELETE',
       headers: Endpoint().headers,
     }).then(res => res.json())
-      .catch(error => console.error('Error', error))
+      .catch(error => setAlert(msgSysError))
       .then(response => {
-        response.success && setDeleteStatus(true)
+        if (response.success) {
+          setDeleteStatus(true)
+          setAlert("")
+        }
+        else (setAlert(msgSysError))
       })
   }
 
+  /* Render */
   return (
     !deleteStatus &&
     <tr>
       <th scope="row">{noItem}</th>
       <td>
-        <InputChange
+        <CellInput
           status={editStatus.status}
           defaultValue={nameSchool}
           changeHandler={changeHandler}
@@ -66,7 +86,7 @@ export default function SchoolRow(props) {
           type="text" />
       </td>
       <td>
-        <InputChange
+        <CellInput
           status={editStatus.status}
           defaultValue={enrrolmentDate}
           changeHandler={changeHandler}
@@ -74,15 +94,16 @@ export default function SchoolRow(props) {
           type="date" />
       </td>
       <td>
-        <InputChange
+        <CellInput
           status={editStatus.status}
           defaultValue={card}
           changeHandler={changeHandler}
           name="card"
-          type="text" />
+          type="text"
+        />
       </td>
       <td>
-        <InputChange
+        <CellInput
           status={editStatus.status}
           defaultValue={typePlan}
           changeHandler={changeHandler}
@@ -90,17 +111,19 @@ export default function SchoolRow(props) {
           type="select" />
       </td>
       <td>
-        <InputChange
+        <CellInput
           status={editStatus.status}
           defaultValue={qtyUsers}
           changeHandler={changeHandler}
           name="qtyUsers"
-          type="number" />
+          type="number"
+          min="0"
+          step="10" />
       </td>
       <td><small className={`rounded-pill p-2 text-white text-nowrap ${tierStyle}`}>{tier}</small></td>
       <td>
         <i type="button" className={`fa fa-edit text-info rounded px-1 ${editStatus.edit}`} onClick={editHandler} />
-        <i type="button" className={`btn-brand-3 text-white rounded p-1 ${editStatus.save}`} onClick={saveHandler}>Save</i>
+        <i type="button" className={`btn-brand-3 text-white rounded p-1 ${editStatus.save}`} onClick={validationHandler}>Save</i>
       </td>
       <td>
         <i type="button" className="fa fa-trash text-danger rounded px-1" onClick={deleteHandler} />
