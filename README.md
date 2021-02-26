@@ -1,7 +1,7 @@
 # Welcome to NeoEducate Admin Portal
 This project runs CRUD operations on a database.
 
-All requests are sent to the [API Developed](https://github.com/veroxcrown/neoeducate-admin-api)
+All requests are sent to the [API Developed - BackEnd](https://github.com/veroxcrown/neoeducate-admin-api)
 
 
 ## Development tools
